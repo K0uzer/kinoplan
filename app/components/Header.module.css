@@ -1,0 +1,15 @@
+.header {
+    width: 100wh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.preview {
+    font-size: 50;
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to bottom left, #5ad1e6, #162b74);
+    -webkit-background-clip: text;
+}
