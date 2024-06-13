@@ -1,5 +1,5 @@
 .header {
-    width: 100wh;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,7 +7,7 @@
 }
 
 .preview {
-    font-size: 50;
+    font-size: 50px;
     color: transparent;
     background-clip: text;
     background-image: linear-gradient(to bottom left, #5ad1e6, #162b74);

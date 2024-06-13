@@ -1,7 +1,8 @@
 'use client'
 
+
 import getBooks from '@/API/getBooks'
-import { Book } from '@/types/booksTypes'
+import { Book } from '@/types'
 import Image from 'next/image'
 
 import { useEffect, useState } from 'react'
@@ -9,30 +10,22 @@ import { useEffect, useState } from 'react'
 export default function Home() {
     const [books, setBook] = useState<Book[]>([])
     useEffect(() => {
-        const fetch = async () => {
-            const booksData: Book[] = await getBooks()
-            setBook(booksData)
-        }
-        fetch()
+        getBooks().then((result) => setBook(result.items))
     }, [])
     return (
-        <main className="">
+        <main>
             <ul>
                 {books.map((book: Book) => (
-                    <li key={book.title}>
-                        <span>{book.title}</span>
-                        <span>{book.authors}</span>
-                        <span>{book.publishedDate}</span>
+                    <li key={book.id}>
+                        <span>{book.volumeInfo.title}</span>
+                        <span>{book.volumeInfo.author}</span>
+                        <span>{book.volumeInfo.publishedDate}</span>
                         <Image
-                            src={book.image}
-                            alt={book.title}
+                            src={book.imageLink.smallThumbnail}
+                            alt={book.volumeInfo.title}
                             width={100}
                             height={100}
                         />
-                        {/* <span>{book.language}</span> */}
-                        {/* <span>{book.price}</span> */}
-                        {/* <span>{book.currency}</span> */}
-                        {/* <span>{book.categories}</span> */}
                     </li>
                 ))}
             </ul>

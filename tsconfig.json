@@ -22,8 +22,12 @@
         "baseUrl": ".",
         "paths": {
             "@/*": ["./*"],
+            "@upOneDr/*": ["./../*"],
+            "@upTwoDr/*": ["./../../*"],
+            "@upThreeDr/*": ["./../../../*"],
             "@/app/*": ["app/*"],
-            "@/components/*": ["components/*"]
+            "@/components/*": ["components/*"],
+            "@/api/*": ["API/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

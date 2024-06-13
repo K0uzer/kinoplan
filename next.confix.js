@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 const path = require('path')
-/** @type {import('next').NextConfig} */
+
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,

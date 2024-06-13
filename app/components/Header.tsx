@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
 
+import Popover from '@/app/components/Popover'
 import logo from './../../public/svg/logo.jpg'
 
 import styles from './Header.module.css'
-import Popover from '@/app/components/Popover'
 
 const Header = () => {
     return (
