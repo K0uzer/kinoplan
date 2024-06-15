@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import { URL_SERVER } from './constants'
 import { Book, BookFromServer } from 'types/index'
-import plugForImage from '@/public/plug.png'
+import plugForImage from '@public/plug.png'
 
 const Home = () => {
     const [books, setBook] = useState<Book[]>([])
