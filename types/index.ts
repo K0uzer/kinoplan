@@ -1,20 +1,21 @@
-export type Book = {
-    id: string
+export type BookFromServer = {
+    id: number
     volumeInfo: {
         title: string
-        author: string
+        authors: string[]
         publishedDate: string
-        language: string
-    }
-    imageLink: {
-        smallThumbnail: string
-        thumbnail: string
-    }
-    saleInfo: {
-        listPrice: {
-            amount: number
-            currencyCode: string
+        imageLinks: {
+            smallThumbnail: string
         }
-        country: string
+        categories: string[]
     }
+}
+
+export type Book = {
+    id: number
+    title: string
+    author: string
+    publishedDate: string
+    image: string
+    category: string
 }

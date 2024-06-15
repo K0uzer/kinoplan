@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, Popover } from 'antd'
+import { Popover } from 'antd'
+import Button from './Button'
 
 const content = (
     <div>
@@ -7,10 +8,10 @@ const content = (
     </div>
 )
 
-const App: React.FC = () => (
+const Cart = () => (
     <Popover content={content} title="Товары в корзине:">
-        <Button type="primary">Корзина</Button>
+        <Button>Корзина</Button>
     </Popover>
 )
 
-export default App
+export default Cart
