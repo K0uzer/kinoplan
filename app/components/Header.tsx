@@ -11,7 +11,7 @@ const Header = () => {
         <header className={styles.header}>
             <Image
                 src={logo}
-                alt="logo"
+                alt="Книжный план"
                 width={150}
                 height={100}
                 loading="lazy"

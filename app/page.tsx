@@ -1,16 +1,17 @@
 'use client'
 
-
-import getBooks from '@/API/getBooks'
 import { Book } from '@/types'
 import Image from 'next/image'
 
 import { useEffect, useState } from 'react'
+import { URL_SERVER } from './constants'
 
-export default function Home() {
+const Home = () => {
     const [books, setBook] = useState<Book[]>([])
     useEffect(() => {
-        getBooks().then((result) => setBook(result.items))
+        fetch(URL_SERVER)
+            .then((result) => result.json())
+            .then((result) => setBook(result.items))
     }, [])
     return (
         <main>
@@ -32,3 +33,5 @@ export default function Home() {
         </main>
     )
 }
+
+export default Home
