@@ -1,18 +1,17 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 
 import { URL_SERVER } from './constants'
 import { Book, BookFromServer } from 'types/index'
-import plugForImage from '@public/plug.png'
 import Loader from './components/Loader'
+import ListBooks from './components/ListBooks'
 
 const Home = () => {
     const [books, setBook] = useState<Book[]>([])
     const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
-        // SetIsLoading(true)
+        setIsLoading((is) => !is)
         fetch(URL_SERVER)
             .then((result) => result.json())
             .then((result) =>
@@ -28,28 +27,12 @@ const Home = () => {
                 }),
             )
             .then((result) => setBook(result))
-        setIsLoading(false)
+        setIsLoading((is) => !is)
     }, [])
-    console.log(books)
     return (
         <main>
             {isLoading && <Loader />}
-            <ul>
-                {books.map((book) => (
-                    <li key={book.id}>
-                        <span>{book.title}</span>
-                        <span>{book.author}</span>
-                        <span>{book.publishedDate}</span>
-                        <span>{book.category}</span>
-                        <Image
-                            src={book.image ?? plugForImage}
-                            alt={book.title}
-                            width={100}
-                            height={100}
-                        />
-                    </li>
-                ))}
-            </ul>
+            <ListBooks books={books} />
         </main>
     )
 }
