@@ -1,3 +1,4 @@
+const { hostname } = require('os')
 const path = require('path')
 
 const nextConfig = {
@@ -7,6 +8,10 @@ const nextConfig = {
 
 module.exports = {
     ...nextConfig,
+    images: {
+        formats: ['image/webp'],
+        domains: ['books.google.com'],
+    },
     webpack: (
         config,
         { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },
