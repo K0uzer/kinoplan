@@ -7,7 +7,7 @@ import Header from './components/Header'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-    title: 'КиноПлан',
+    title: 'Книжный план',
     description: 'Приложение для продажи книг',
 }
 

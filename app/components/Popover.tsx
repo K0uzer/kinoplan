@@ -1,15 +1,19 @@
+'use client'
+
 import React from 'react'
 import { Popover } from 'antd'
 import Button from './Button'
 
-const content = (
-    <div>
-        <p>Content</p>
-    </div>
-)
+const Content = () => {
+    return (
+        <div>
+            <p>Content</p>
+        </div>
+    )
+}
 
 const Cart = () => (
-    <Popover content={content} title="Товары в корзине:">
+    <Popover content={Content} title="Товары в корзине:">
         <Button>Корзина</Button>
     </Popover>
 )

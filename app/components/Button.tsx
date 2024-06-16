@@ -1,10 +1,6 @@
 import { ReactNode } from 'react'
 
-type ButtonProps = {
-    children: ReactNode
-}
-
-const Button = ({ children }: ButtonProps) => {
+const Button = ({ children }: { children: ReactNode }) => {
     return <button>{children}</button>
 }
 

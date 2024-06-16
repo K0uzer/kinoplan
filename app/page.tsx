@@ -6,10 +6,13 @@ import Image from 'next/image'
 import { URL_SERVER } from './constants'
 import { Book, BookFromServer } from 'types/index'
 import plugForImage from '@public/plug.png'
+import Loader from './components/Loader'
 
 const Home = () => {
     const [books, setBook] = useState<Book[]>([])
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
+        // SetIsLoading(true)
         fetch(URL_SERVER)
             .then((result) => result.json())
             .then((result) =>
@@ -25,10 +28,12 @@ const Home = () => {
                 }),
             )
             .then((result) => setBook(result))
+        setIsLoading(false)
     }, [])
     console.log(books)
     return (
         <main>
+            {isLoading && <Loader />}
             <ul>
                 {books.map((book) => (
                     <li key={book.id}>
