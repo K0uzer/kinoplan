@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 
-import Popover from '@/app/components/Popover'
-import logo from './../../public/svg/logo.jpg'
+import Popover from '@app/components/Popover'
+import logo from '@public/logo.jpg'
+import plugForImage from '@public/plug.png'
 
 import styles from './Header.module.css'
 
@@ -10,7 +11,7 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <Image
-                src={logo}
+                src={logo ?? plugForImage}
                 alt="Книжный план"
                 width={150}
                 height={100}

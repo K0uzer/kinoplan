@@ -1,35 +1,38 @@
 'use client'
 
-import { Book } from '@/types'
-import Image from 'next/image'
-
 import { useEffect, useState } from 'react'
+
 import { URL_SERVER } from './constants'
+import { Book, BookFromServer } from 'types/index'
+import Loader from './components/Loader'
+import ListBooks from './components/ListBooks'
 
 const Home = () => {
     const [books, setBook] = useState<Book[]>([])
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
+        setIsLoading((is) => !is)
         fetch(URL_SERVER)
             .then((result) => result.json())
-            .then((result) => setBook(result.items))
+            .then((result) =>
+                result.items.map((item: BookFromServer) => {
+                    return {
+                        id: item.id,
+                        title: item.volumeInfo.title,
+                        author: item.volumeInfo?.authors[0],
+                        publishedDate: item.volumeInfo.publishedDate,
+                        image: item.volumeInfo.imageLinks.smallThumbnail,
+                        category: item.volumeInfo?.categories[0],
+                    }
+                }),
+            )
+            .then((result) => setBook(result))
+        setIsLoading((is) => !is)
     }, [])
     return (
         <main>
-            <ul>
-                {books.map((book: Book) => (
-                    <li key={book.id}>
-                        <span>{book.volumeInfo.title}</span>
-                        <span>{book.volumeInfo.author}</span>
-                        <span>{book.volumeInfo.publishedDate}</span>
-                        <Image
-                            src={book.imageLink.smallThumbnail}
-                            alt={book.volumeInfo.title}
-                            width={100}
-                            height={100}
-                        />
-                    </li>
-                ))}
-            </ul>
+            {isLoading && <Loader />}
+            <ListBooks array={books} />
         </main>
     )
 }

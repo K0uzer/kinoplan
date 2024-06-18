@@ -1,16 +1,21 @@
+'use client'
+
 import React from 'react'
-import { Button, Popover } from 'antd'
+import { Popover } from 'antd'
+import Button from './Button'
 
-const content = (
-    <div>
-        <p>Content</p>
-    </div>
-)
+const Content = () => {
+    return (
+        <div>
+            <p>Content</p>
+        </div>
+    )
+}
 
-const App: React.FC = () => (
-    <Popover content={content} title="Товары в корзине:">
-        <Button type="primary">Корзина</Button>
+const Cart = () => (
+    <Popover content={Content} title="Товары в корзине:">
+        <Button>Корзина</Button>
     </Popover>
 )
 
-export default App
+export default Cart
