@@ -1,38 +1,25 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
-import { URL_SERVER } from './constants'
-import { Book, BookFromServer } from 'types/index'
-import Loader from './components/Loader'
-import ListBooks from './components/ListBooks'
+import Loader from '@components/loader/Loader'
+import ListBooks from '@components/book/ListBooks'
+import { getBooks } from '@api/getBooks'
+import { useBook } from '@hooks/useBook'
 
 const Home = () => {
-    const [books, setBook] = useState<Book[]>([])
-    const [isLoading, setIsLoading] = useState(true)
+    const { setBook, isLoading, setIsLoading } = useBook()
+
     useEffect(() => {
-        setIsLoading((is) => !is)
-        fetch(URL_SERVER)
-            .then((result) => result.json())
-            .then((result) =>
-                result.items.map((item: BookFromServer) => {
-                    return {
-                        id: item.id,
-                        title: item.volumeInfo.title,
-                        author: item.volumeInfo?.authors[0],
-                        publishedDate: item.volumeInfo.publishedDate,
-                        image: item.volumeInfo.imageLinks.smallThumbnail,
-                        category: item.volumeInfo?.categories[0],
-                    }
-                }),
-            )
-            .then((result) => setBook(result))
-        setIsLoading((is) => !is)
-    }, [])
+        setIsLoading(true)
+        getBooks().then((content) => setBook(content))
+        setIsLoading(false)
+    }, [setBook, setIsLoading])
+
     return (
         <main>
             {isLoading && <Loader />}
-            <ListBooks books={books} />
+            <ListBooks />
         </main>
     )
 }

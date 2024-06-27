@@ -1,3 +1,16 @@
 {
-  "terminal.integrated.confirmOnExit": "always"
+    "terminal.integrated.confirmOnExit": "always",
+    "prettier.configPath": "./.prettierrc",
+    "cSpell.words": [
+        "время",
+        "Книжный",
+        "Контент",
+        "Корзина",
+        "корзине",
+        "план",
+        "Пришло",
+        "Товары",
+        "читать"
+    ],
+    "editor.formatOnSave": true
 }
