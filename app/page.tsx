@@ -6,8 +6,9 @@ import Loader from '@components/loader/Loader'
 import ListBooks from '@components/book/ListBooks'
 import { getBooks } from '@api/getBooks'
 import { useBook } from '@hooks/useBook'
+import Panel from '@components/book/Panel'
 
-const Home = () => {
+const HomePage = () => {
     const { setBook, isLoading, setIsLoading } = useBook()
 
     useEffect(() => {
@@ -19,9 +20,10 @@ const Home = () => {
     return (
         <main>
             {isLoading && <Loader />}
+            <Panel />
             <ListBooks />
         </main>
     )
 }
 
-export default Home
+export default HomePage

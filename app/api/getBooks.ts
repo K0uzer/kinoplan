@@ -2,7 +2,11 @@ import { URL_SERVER } from '@app/constants'
 import { BookFromServer } from '@app/types'
 
 export const getBooks = async () => {
-    const dataFromServer = fetch(URL_SERVER).then((result) => result.json())
+
+    const dataFromServer = await fetch(URL_SERVER).then((result) =>
+        result.json(),
+    )
+
     const filteredData = await dataFromServer
         .then((result: { items: BookFromServer[] }) =>
             result.items.map((item: BookFromServer) => {
@@ -19,5 +23,7 @@ export const getBooks = async () => {
         .catch((error: string) => {
             console.error(error)
         })
+
+    console.log(filteredData)
     return filteredData
 }

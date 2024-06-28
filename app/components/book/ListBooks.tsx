@@ -1,10 +1,9 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useMemo } from 'react'
 
 import ItemBook from './ItemBook'
-import { Book } from '@app/types'
+import { useBook } from '@app/hooks/useBook'
 
 import styles from './ListBooks.module.css'
-import { useBook } from '@app/hooks/useBook'
 
 const ListBooks = () => {
     const { books } = useBook()

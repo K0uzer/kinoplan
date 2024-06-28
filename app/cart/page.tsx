@@ -5,9 +5,9 @@ import Link from 'next/link'
 import React from 'react'
 
 import styles from './cart.module.css'
-import { useBook } from '@app/hooks/useBook'
+import { useBook } from '@hooks/useBook'
 
-const page = () => {
+const CartPage = () => {
     const { cart, setCart } = useBook()
 
     const payForThePurchase = () => {
@@ -36,4 +36,4 @@ const page = () => {
     )
 }
 
-export default page
+export default CartPage
