@@ -19,6 +19,8 @@ export type ContextBookType = {
     setCart: Dispatch<SetStateAction<Book[]>>
     isLoading: boolean
     setIsLoading: Dispatch<SetStateAction<boolean>>
+    bought: boolean
+    setBought: Dispatch<SetStateAction<boolean>>
 }
 
 export const BookContext = createContext<ContextBookType>({
@@ -28,12 +30,15 @@ export const BookContext = createContext<ContextBookType>({
     setCart: () => {},
     isLoading: false,
     setIsLoading: () => {},
+    bought: false,
+    setBought: () => {},
 })
 
 const BookContextProvider: FC<PropsWithChildren> = ({ children }) => {
     const [books, setBook] = useState<Book[]>([])
     const [cart, setCart] = useState<Book[]>([])
     const [isLoading, setIsLoading] = useState(false)
+    const [bought, setBought] = useState(false)
 
     const value: ContextBookType = useMemo(
         () => ({
@@ -43,8 +48,19 @@ const BookContextProvider: FC<PropsWithChildren> = ({ children }) => {
             setCart,
             isLoading,
             setIsLoading,
+            bought,
+            setBought,
         }),
-        [books, setBook, cart, setCart, isLoading, setIsLoading],
+        [
+            books,
+            setBook,
+            cart,
+            setCart,
+            isLoading,
+            setIsLoading,
+            bought,
+            setBought,
+        ],
     )
     return <BookContext.Provider value={value}>{children}</BookContext.Provider>
 }

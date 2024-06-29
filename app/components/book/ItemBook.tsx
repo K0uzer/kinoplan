@@ -25,7 +25,7 @@ const ItemBook = ({ book }: { book: Book }) => {
 
     return (
         <li className={styles.listItem}>
-            <span className={styles.titleBook}>{book?.title}</span>
+            <span className={styles.titleBook}>{book.title}</span>
             <Image
                 className={styles.imageBook}
                 src={book.image ?? plugForImage}
@@ -33,11 +33,11 @@ const ItemBook = ({ book }: { book: Book }) => {
                 width={150}
                 height={200}
             />
-            <span className={styles.authorBook}>Автор:{book?.author}</span>
+            <span className={styles.authorBook}>Автор:{book.author}</span>
             <span className={styles.publishedDate}>
                 Дата публикации:{book?.publishedDate}
             </span>
-            <span className={styles.category}>Категория:{book?.category}</span>
+            <span className={styles.category}>Категория:{book.category}</span>
 
             {!locatedInCart ? (
                 <button onClick={addBooksInCart} className={styles.buttonAdd}>

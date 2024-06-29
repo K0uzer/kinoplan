@@ -23,11 +23,7 @@ const CartItem = ({ book }: { book: Book }) => {
             <button className={styles.button} onClick={incrementQuantity}>
                 Добавить
             </button>
-            <button
-                disabled={quantityBooks > 0 ? false : true}
-                className={styles.button}
-                onClick={decrementQuantity}
-            >
+            <button className={styles.button} onClick={decrementQuantity}>
                 Убрать
             </button>
         </li>
