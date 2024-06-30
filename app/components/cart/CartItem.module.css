@@ -1,0 +1,36 @@
+.cartItem {
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid rgb(37, 75, 200);
+}
+
+.itemContent {
+    width: 40ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.quantity {
+    width: 40ch;
+    text-overflow: ellipsis;
+}
+
+.button {
+    width: 75px;
+    height: 25px;
+    margin-left: 1%;
+    border: none;
+    border-radius: 6px;
+    background-color: #31ef646f;
+    transition: 0.3s ease-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #7aef31b3;
+        transition: 0.3s ease-out;
+    }
+}

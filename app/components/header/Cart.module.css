@@ -1,0 +1,40 @@
+.cart {
+    width: 40vw;
+}
+
+.buttonCartContainer {
+    display: block;
+}
+
+.buttonCart {
+    width: 200px;
+    height: 25px;
+    margin: 20px 0 0 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #64ef316f;
+    transition: 0.3s ease-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #83ef31b3;
+        transition: 0.3s ease-out;
+    }
+}
+
+.buttonPopover {
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background-color: #244db4d9;
+    transition: 0.3s ease-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #3167efb3;
+        transition: 0.3s ease-out;
+    }
+}
