@@ -1,7 +1,8 @@
 import { URL_SERVER } from '@app/constants'
-import { BookFromServer } from '@app/types'
+import { Book, BookFromServer } from '@app/types'
+import { Dispatch, SetStateAction } from 'react'
 
-export const getBooks = async () => {
+export const getBooks = async (setBook: Dispatch<SetStateAction<Book[]>>) => {
     const dataFromServer = fetch(URL_SERVER).then((result) => result.json())
     const filteredData = await dataFromServer
         .then((result: { items: BookFromServer[] }) =>
@@ -16,6 +17,7 @@ export const getBooks = async () => {
                 }
             }),
         )
+        .then((result) => setBook(result))
         .catch((error: string) => {
             throw new Error(
                 `Текущая ошибка связана с запросом к серверу ${error}`,

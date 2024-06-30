@@ -12,7 +12,7 @@ const HomePage = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        getBooks().then((content) => setBook(content))
+        getBooks(setBook)
         setIsLoading(false)
     }, [setBook, setIsLoading])
 
