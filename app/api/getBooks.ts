@@ -14,6 +14,7 @@ export const getBooks = async (setBook: Dispatch<SetStateAction<Book[]>>) => {
                     publishedDate: item.volumeInfo.publishedDate,
                     image: item.volumeInfo.imageLinks.smallThumbnail,
                     category: item.volumeInfo.categories[0],
+                    quantity: 0,
                 }
             }),
         )

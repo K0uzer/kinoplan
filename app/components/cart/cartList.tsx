@@ -5,6 +5,7 @@ import CartItem from './CartItem'
 
 const CartList = () => {
     const { cart } = useBook()
+
     return (
         <ul>
             {cart.map((book) => (
