@@ -8,17 +8,30 @@ const CartItem = ({ book }: { book: Book }) => {
 
     const incrementQuantity = () => {
         setCart((prevState) =>
-            prevState.map((item) => ({ ...item, quantity: item.quantity + 1 })),
+            prevState.map((item) =>
+                item.title === book.title
+                    ? {
+                          ...item,
+                          quantity: item.quantity + 1,
+                      }
+                    : item,
+            ),
         )
     }
 
     const decrementQuantity = () => {
-        setCart((prevState) => prevState)
+        setCart((prevState) =>
+            prevState.map((item) =>
+                item.quantity && item.title === book.title
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item,
+            ),
+        )
     }
 
-    const quantityBooks = cart.filter(
-        (item) => item.title === book.title,
-    ).length
+    const quantityBooks = cart.map(
+        (item) => item.title === book.title && item.quantity,
+    )
 
     return (
         <li className={styles.cartItem}>
@@ -28,11 +41,9 @@ const CartItem = ({ book }: { book: Book }) => {
             <button className={styles.button} onClick={incrementQuantity}>
                 Добавить
             </button>
-            {
-                <button className={styles.button} onClick={decrementQuantity}>
-                    Убрать
-                </button>
-            }
+            <button className={styles.button} onClick={decrementQuantity}>
+                Убрать
+            </button>
         </li>
     )
 }

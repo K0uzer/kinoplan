@@ -12,7 +12,7 @@ const ItemBook = ({ book }: { book: Book }) => {
     const [locatedInCart, setLocatedInCart] = useState(false)
 
     const addBooksInCart = useCallback(() => {
-        setCart((prevState) => [...prevState, book])
+        setCart((prevState) => [...prevState, { ...book, quantity: 1 }])
         setLocatedInCart((prevState) => !prevState)
     }, [book, setCart])
 
