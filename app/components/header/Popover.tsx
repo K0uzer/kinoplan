@@ -15,7 +15,6 @@ const Content = () => {
         setCart([])
     }, [setCart])
 
-    return useMemo(() => {
         return (
             <div className={styles.cart}>
                 <CartList />
@@ -38,7 +37,6 @@ const Content = () => {
                 </div>
             </div>
         )
-    }, [clearCart, cart])
 }
 
 const Cart = () => {

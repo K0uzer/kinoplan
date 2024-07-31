@@ -1,29 +1,30 @@
-import { URL_SERVER } from '@app/constants'
-import { BookFromServer } from '@app/types'
+import { Dispatch, SetStateAction } from 'react'
 
-export const getBooks = async () => {
+import { URL_SERVER } from '@app/constants/index'
+import { Book, BookFromServer } from '@app/types'
 
-    const dataFromServer = await fetch(URL_SERVER).then((result) =>
-        result.json(),
-    )
+export const getBooks = (setBook: Dispatch<SetStateAction<Book[]>>) => {
+    const dataFromServer = fetch(URL_SERVER).then((result) => result.json())
 
-    const filteredData = await dataFromServer
-        .then((result: { items: BookFromServer[] }) =>
-            result.items.map((item: BookFromServer) => {
+    const content = dataFromServer
+        .then((result: { items: BookFromServer[] }) => {
+            const books = result.items.map((item: BookFromServer) => {
                 return {
                     id: item.id,
                     title: item.volumeInfo.title,
-                    author: item.volumeInfo?.authors[0],
+                    author: item.volumeInfo?.authors?.[0] ?? 'Unknown Author',
                     publishedDate: item.volumeInfo.publishedDate,
-                    image: item.volumeInfo.imageLinks.smallThumbnail,
-                    category: item.volumeInfo?.categories[0],
+                    image: item.volumeInfo.imageLinks?.smallThumbnail ?? '',
+                    category:
+                        item.volumeInfo?.categories?.[0] ?? 'Uncategorized',
+                    count: 0,
                 }
-            }),
-        )
+            })
+            setBook(books)
+        })
         .catch((error: string) => {
             console.error(error)
         })
 
-    console.log(filteredData)
-    return filteredData
+    return content
 }

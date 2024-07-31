@@ -1,6 +1,3 @@
 node_modules/
-<<<<<<< HEAD
 .next/
-=======
-.next/
->>>>>>> 828219b9380033425e1201814f33bcb31c0fb117
+next-env.d.ts

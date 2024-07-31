@@ -18,4 +18,5 @@ export type Book = {
     publishedDate: string
     image: string
     category: string
+    count: number
 }

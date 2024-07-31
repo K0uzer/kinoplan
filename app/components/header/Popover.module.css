@@ -1,3 +1,10 @@
+:root {
+    --button-cart-background-color:#64ef316f;
+    --button-cart-background-color--hover:#83ef31b3;
+    --button-popover-background-color: #244db4d9;
+    --button-popover-background-color--hover: #3167efb3;
+}
+
 .cart {
     width: 40vw;
 }
@@ -12,12 +19,12 @@
     margin: 20px 0 0 20px;
     border: none;
     border-radius: 6px;
-    background-color: #64ef316f;
+    background-color: var(--button-cart-background-color);
     transition: 0.3s ease-out;
     cursor: pointer;
 
     &:hover {
-        background-color: #83ef31b3;
+        background-color: var(--button-cart-background-color--hover);
         transition: 0.3s ease-out;
     }
 }
@@ -29,12 +36,12 @@
     border: none;
     border-radius: 6px;
     color: white;
-    background-color: #244db4d9;
+    background-color: var(--button-popover-background-color);
     transition: 0.3s ease-out;
     cursor: pointer;
 
     &:hover {
-        background-color: #3167efb3;
+        background-color: var(--button-popover-background-color--hover);
         transition: 0.3s ease-out;
     }
 }

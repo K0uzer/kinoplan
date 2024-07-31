@@ -7,15 +7,13 @@ import styles from './ListBooks.module.css'
 
 const ListBooks = () => {
     const { books } = useBook()
-    return useMemo(() => {
-        return (
-            <ul className={styles.list}>
-                {books.map((book) => (
-                    <ItemBook key={book.id} book={book} />
-                ))}
-            </ul>
-        )
-    }, [books])
+    return (
+        <ul className={styles.list}>
+            {books.map((book) => (
+                <ItemBook key={book.id} book={book} />
+            ))}
+        </ul>
+    )
 }
 
 export default ListBooks

@@ -8,20 +8,24 @@ import { useBook } from '@app/hooks/useBook'
 import styles from './ItemBook.module.css'
 
 const ItemBook = ({ book }: { book: Book }) => {
-    const { setCart } = useBook()
-    const [locatedInCart, setLocatedInCart] = useState(false)
+    const { cart, setCart } = useBook()
 
-    const addBooksInCart = useCallback(() => {
-        setCart((prevState) => [...prevState, book])
-        setLocatedInCart((prevState) => !prevState)
-    }, [book, setCart])
+    const filteredArrayCartOnUniqueBook = cart.filter(
+        (element) => element.title === book.title,
+    ).length
 
-    const deleteBooksFromCart = useCallback(() => {
+    const addBooksInCart = () => {
+        setCart((prevState) => [
+            ...prevState,
+            { ...book, count: book.count + 1 },
+        ])
+    }
+
+    const deleteBooksFromCart = () => {
         setCart((prevState) =>
             prevState.filter((item) => item.title !== book.title),
         )
-        setLocatedInCart((prevState) => !prevState)
-    }, [book, setCart])
+    }
 
     return (
         <li className={styles.listItem}>
@@ -39,7 +43,7 @@ const ItemBook = ({ book }: { book: Book }) => {
             </span>
             <span className={styles.category}>Категория:{book?.category}</span>
 
-            {!locatedInCart ? (
+            {!filteredArrayCartOnUniqueBook ? (
                 <button onClick={addBooksInCart} className={styles.buttonAdd}>
                     Добавить в корзину
                 </button>

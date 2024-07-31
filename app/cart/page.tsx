@@ -24,7 +24,6 @@ const CartPage = () => {
                 </Link>
                 <Link href="/">
                     <button
-                        disabled={cart.length > 0 ? false : true}
                         onClick={payForThePurchase}
                         className={styles.button}
                     >

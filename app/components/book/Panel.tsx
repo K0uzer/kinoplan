@@ -2,11 +2,11 @@ import React from 'react'
 
 const Panel = () => {
     return (
-        <div>
+        <section>
             <select name="" id="">
                 <option value="">1</option>
             </select>
-        </div>
+        </section>
     )
 }
 

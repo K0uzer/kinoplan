@@ -2,6 +2,7 @@
     "terminal.integrated.confirmOnExit": "always",
     "prettier.configPath": "./.prettierrc",
     "cSpell.words": [
+        "Uncategorized",
         "время",
         "Книжный",
         "Контент",

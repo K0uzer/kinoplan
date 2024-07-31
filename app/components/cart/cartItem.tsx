@@ -1,19 +1,39 @@
 import React, { useState } from 'react'
 
 import { Book } from '@app/types'
+import { useBook } from '@app/hooks/useBook'
 
 import styles from './CartItem.module.css'
 
 const CartItem = ({ book }: { book: Book }) => {
-    const [quantityBooks, setQuantityBooks] = useState(1)
+    const { cart, setCart } = useBook()
 
-    const incrementQuantity = () => {
-        setQuantityBooks((prevState) => prevState + 1)
-    }
+    const quantityBooks = cart.map(
+        (element) => element.title === book.title && element.count,
+    )
 
-    const decrementQuantity = () => {
-        setQuantityBooks((prevState) => prevState - 1)
-    }
+    const incrementCount = cart.map((element) =>
+        element.title === book.title
+            ? { ...element, count: element.count + 1 }
+            : element,
+    )
+
+    const decrementCount = cart.map((element) =>
+        element.title === book.title
+            ? { ...element, count: element.count - 1 }
+            : element,
+    )
+
+    console.log('РЕНДЕР')
+
+    const incrementQuantity = () => setCart(() => incrementCount)
+
+    const decrementQuantity = () =>
+        !quantityBooks
+            ? setCart(() => decrementCount)
+            : setCart((prevState) =>
+                  prevState.filter((item) => item.title !== book.title),
+              )
 
     return (
         <li className={styles.cartItem}>
@@ -23,11 +43,7 @@ const CartItem = ({ book }: { book: Book }) => {
             <button className={styles.button} onClick={incrementQuantity}>
                 Добавить
             </button>
-            <button
-                disabled={quantityBooks > 0 ? false : true}
-                className={styles.button}
-                onClick={decrementQuantity}
-            >
+            <button className={styles.button} onClick={decrementQuantity}>
                 Убрать
             </button>
         </li>

@@ -1,11 +1,12 @@
 import React from 'react'
 
 import styles from './Loader.module.css'
+import RoadLoad from '@app/UI/RoadLoad'
 
 const Loader = () => {
     return (
         <div className={styles.loader}>
-            <span>Loading content...</span>
+            <RoadLoad />
         </div>
     )
 }
