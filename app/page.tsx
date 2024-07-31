@@ -6,7 +6,6 @@ import Loader from '@components/loader/Loader'
 import ListBooks from '@components/book/ListBooks'
 import { getBooks } from '@api/getBooks'
 import { useBook } from '@hooks/useBook'
-import Panel from '@components/book/Panel'
 
 const HomePage = () => {
     const { setBook, isLoading, setIsLoading } = useBook()
@@ -17,13 +16,7 @@ const HomePage = () => {
         setIsLoading(false)
     }, [setBook, setIsLoading])
 
-    return (
-        <main>
-            {isLoading && <Loader />}
-            <Panel />
-            <ListBooks />
-        </main>
-    )
+    return <main>{isLoading ? <Loader /> : <ListBooks />}</main>
 }
 
 export default HomePage

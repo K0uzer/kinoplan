@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: 'Книжный план',
-    description: 'Приложение для продажи книг',
+    description: 'Сайт для продажи книг',
 }
 
 const CartLayout = ({ children }: { children: ReactNode }) => {

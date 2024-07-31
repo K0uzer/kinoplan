@@ -1,22 +1,25 @@
 'use client'
 
-import CartList from '@app/components/cart/CartList'
-import Link from 'next/link'
 import React from 'react'
 
+import CartList from '@app/components/cart/CartList'
+import ResultPurchase from './../components/resultPurchase/ResultPurchase'
+import { useBook } from '@app/hooks/useBook'
+import Result from '@app/components/result/Result'
+
 import styles from './cart.module.css'
-import { useBook } from '@hooks/useBook'
 
 const CartPage = () => {
-    const { cart, setCart } = useBook()
+    const { bought, setBought, cart, setCart } = useBook()
 
-    const payForThePurchase = () => {
+    const makePurchase = () => {
         setCart([])
-        alert('Оплачено')
+        setBought((prevState) => !prevState)
     }
 
     return (
         <div className={styles.cartWrapper}>
+<<<<<<< HEAD
             <CartList />
             <div className={styles.buttonWrapper}>
                 <Link href="/">
@@ -31,6 +34,27 @@ const CartPage = () => {
                     </button>
                 </Link>
             </div>
+=======
+            {bought ? (
+                <ResultPurchase />
+            ) : (
+                <>
+                    {cart.length ? (
+                        <>
+                            <CartList />
+                            <button
+                                className={styles.button}
+                                onClick={makePurchase}
+                            >
+                                Оплатить
+                            </button>
+                        </>
+                    ) : (
+                        <Result />
+                    )}
+                </>
+            )}
+>>>>>>> 22b3524b8f27bffa2cd587fa76b359583492b7d9
         </div>
     )
 }

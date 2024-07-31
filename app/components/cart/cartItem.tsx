@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 import { Book } from '@app/types'
 import { useBook } from '@app/hooks/useBook'
 
@@ -8,6 +6,7 @@ import styles from './CartItem.module.css'
 const CartItem = ({ book }: { book: Book }) => {
     const { cart, setCart } = useBook()
 
+<<<<<<< HEAD
     const quantityBooks = cart.map(
         (element) => element.title === book.title && element.count,
     )
@@ -34,6 +33,34 @@ const CartItem = ({ book }: { book: Book }) => {
             : setCart((prevState) =>
                   prevState.filter((item) => item.title !== book.title),
               )
+=======
+    const incrementQuantity = () => {
+        setCart((prevState) =>
+            prevState.map((item) =>
+                item.title === book.title
+                    ? {
+                          ...item,
+                          quantity: item.quantity + 1,
+                      }
+                    : item,
+            ),
+        )
+    }
+
+    const decrementQuantity = () => {
+        setCart((prevState) =>
+            prevState.map((item) =>
+                item.quantity && item.title === book.title
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item,
+            ),
+        )
+    }
+>>>>>>> 22b3524b8f27bffa2cd587fa76b359583492b7d9
+
+    const quantityBooks = cart.map(
+        (item) => item.title === book.title && item.quantity,
+    )
 
     return (
         <li className={styles.cartItem}>

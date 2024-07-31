@@ -18,5 +18,9 @@ export type Book = {
     publishedDate: string
     image: string
     category: string
+<<<<<<< HEAD
     count: number
+=======
+    quantity: number
+>>>>>>> 22b3524b8f27bffa2cd587fa76b359583492b7d9
 }

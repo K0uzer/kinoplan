@@ -10,9 +10,16 @@ import styles from './ItemBook.module.css'
 const ItemBook = ({ book }: { book: Book }) => {
     const { cart, setCart } = useBook()
 
+<<<<<<< HEAD
     const filteredArrayCartOnUniqueBook = cart.filter(
         (element) => element.title === book.title,
     ).length
+=======
+    const addBooksInCart = useCallback(() => {
+        setCart((prevState) => [...prevState, { ...book, quantity: 1 }])
+        setLocatedInCart((prevState) => !prevState)
+    }, [book, setCart])
+>>>>>>> 22b3524b8f27bffa2cd587fa76b359583492b7d9
 
     const addBooksInCart = () => {
         setCart((prevState) => [
@@ -29,7 +36,7 @@ const ItemBook = ({ book }: { book: Book }) => {
 
     return (
         <li className={styles.listItem}>
-            <span className={styles.titleBook}>{book?.title}</span>
+            <span className={styles.titleBook}>{book.title}</span>
             <Image
                 className={styles.imageBook}
                 src={book.image ?? plugForImage}
@@ -37,11 +44,11 @@ const ItemBook = ({ book }: { book: Book }) => {
                 width={150}
                 height={200}
             />
-            <span className={styles.authorBook}>Автор:{book?.author}</span>
+            <span className={styles.authorBook}>Автор:{book.author}</span>
             <span className={styles.publishedDate}>
                 Дата публикации:{book?.publishedDate}
             </span>
-            <span className={styles.category}>Категория:{book?.category}</span>
+            <span className={styles.category}>Категория:{book.category}</span>
 
             {!filteredArrayCartOnUniqueBook ? (
                 <button onClick={addBooksInCart} className={styles.buttonAdd}>
