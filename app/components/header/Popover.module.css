@@ -1,0 +1,47 @@
+:root {
+    --button-cart-background-color:#64ef316f;
+    --button-cart-background-color--hover:#83ef31b3;
+    --button-popover-background-color: #244db4d9;
+    --button-popover-background-color--hover: #3167efb3;
+}
+
+.cart {
+    width: 40vw;
+}
+
+.buttonCartContainer {
+    display: block;
+}
+
+.buttonCart {
+    width: 200px;
+    height: 25px;
+    margin: 20px 0 0 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--button-cart-background-color);
+    transition: 0.3s ease-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--button-cart-background-color--hover);
+        transition: 0.3s ease-out;
+    }
+}
+
+.buttonPopover {
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background-color: var(--button-popover-background-color);
+    transition: 0.3s ease-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--button-popover-background-color--hover);
+        transition: 0.3s ease-out;
+    }
+}

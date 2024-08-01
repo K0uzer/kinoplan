@@ -1,0 +1,22 @@
+:root {
+    --preview-color-gradient-left-bottom: #5ad1e6;
+    --preview-color-gradient-rigth-top: #162b74;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.preview {
+    font-size: 50px;
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(
+        to bottom left,
+        var(--preview-color-gradient-left-bottom),
+        var(--preview-color-gradient-rigth-top)
+    );
+    -webkit-background-clip: text;
+}
