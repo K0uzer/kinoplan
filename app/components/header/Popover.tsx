@@ -1,9 +1,9 @@
 'use client'
-import React, { useCallback, useMemo } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { Popover } from 'antd'
 
-import CartList from '../cart/CartList'
+import CartList from '@components/cart/CartList'
 import { useBook } from '@app/hooks/useBook'
 
 import styles from './Popover.module.css'
@@ -11,32 +11,32 @@ import styles from './Popover.module.css'
 const Content = () => {
     const { cart, setCart } = useBook()
 
-    const clearCart = useCallback(() => {
+    const clearCart = () => {
         setCart([])
-    }, [setCart])
+    }
 
-        return (
-            <div className={styles.cart}>
-                <CartList />
-                <div className={styles.buttonCartContainer}>
-                    <Link href="/cart">
-                        <button
-                            disabled={cart.length > 0 ? false : true}
-                            className={styles.buttonCart}
-                        >
-                            Купить
-                        </button>
-                    </Link>
+    return (
+        <div className={styles.cart}>
+            <CartList />
+            <div className={styles.buttonCartContainer}>
+                <Link href="/cart">
                     <button
                         disabled={cart.length > 0 ? false : true}
-                        onClick={clearCart}
                         className={styles.buttonCart}
                     >
-                        Отчистить
+                        Купить
                     </button>
-                </div>
+                </Link>
+                <button
+                    disabled={cart.length > 0 ? false : true}
+                    onClick={clearCart}
+                    className={styles.buttonCart}
+                >
+                    Отчистить
+                </button>
             </div>
-        )
+        </div>
+    )
 }
 
 const Cart = () => {
