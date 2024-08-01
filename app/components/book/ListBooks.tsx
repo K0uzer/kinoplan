@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 
 import ItemBook from './ItemBook'
 import { useBook } from '@app/hooks/useBook'

@@ -9,8 +9,7 @@ import plugForImage from '@public/plug.png'
 
 import styles from './Header.module.css'
 
-const Header = () =>
-    useMemo(() => {
+const Header = () => {
         return (
             <header className={styles.header}>
                 <Image
@@ -24,6 +23,6 @@ const Header = () =>
                 <Popover />
             </header>
         )
-    }, [])
+    }
 
 export default Header
