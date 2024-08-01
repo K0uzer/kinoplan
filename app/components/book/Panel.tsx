@@ -1,11 +1,11 @@
+import SelectData from '@app/UI/SelectData'
 import React from 'react'
 
 const Panel = () => {
     return (
         <section>
-            <select name="" id="">
-                <option value="">1</option>
-            </select>
+            <SelectData />
+            <SelectData />
         </section>
     )
 }

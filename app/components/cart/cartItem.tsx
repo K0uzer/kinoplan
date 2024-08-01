@@ -24,8 +24,6 @@ const CartItem = ({ book }: { book: Book }) => {
             : element,
     )
 
-    console.log('РЕНДЕР')
-
     const incrementQuantity = () => setCart(() => incrementCount)
 
     const decrementQuantity = () =>

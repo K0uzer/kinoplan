@@ -23,7 +23,8 @@
         "@types/node": "20.14.2",
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
-        "eslint-plugin-react-hooks": "4.6.2"
+        "eslint-plugin-react-hooks": "4.6.2",
+        "terser-brunch": "^4.1.0"
     },
     "_moduleAliases": {
         "@modules": "dist/rest/modules",

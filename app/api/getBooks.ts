@@ -8,7 +8,7 @@ export const getBooks = (setBook: Dispatch<SetStateAction<Book[]>>) => {
 
     const content = dataFromServer
         .then((result: { items: BookFromServer[] }) => {
-            const books = result.items.map((item: BookFromServer) => {
+            const books = result?.items.map((item: BookFromServer) => {
                 return {
                     id: item.id,
                     title: item.volumeInfo.title,
@@ -25,6 +25,5 @@ export const getBooks = (setBook: Dispatch<SetStateAction<Book[]>>) => {
         .catch((error: string) => {
             console.error(error)
         })
-
     return content
 }
