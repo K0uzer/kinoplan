@@ -14,7 +14,7 @@ import { Book } from '@app/types'
 
 export type ContextBookType = {
     books: Book[]
-    setBook: Dispatch<SetStateAction<Book[]>>
+    setBooks: Dispatch<SetStateAction<Book[]>>
     cart: Book[]
     setCart: Dispatch<SetStateAction<Book[]>>
     isLoading: boolean
@@ -23,7 +23,7 @@ export type ContextBookType = {
 
 export const BookContext = createContext<ContextBookType>({
     books: [],
-    setBook: () => {},
+    setBooks: () => {},
     cart: [],
     setCart: () => {},
     isLoading: false,
@@ -31,20 +31,20 @@ export const BookContext = createContext<ContextBookType>({
 })
 
 const BookContextProvider: FC<PropsWithChildren> = ({ children }) => {
-    const [books, setBook] = useState<Book[]>([])
+    const [books, setBooks] = useState<Book[]>([])
     const [cart, setCart] = useState<Book[]>([])
     const [isLoading, setIsLoading] = useState(false)
 
     const value: ContextBookType = useMemo(
         () => ({
             books,
-            setBook,
+            setBooks,
             cart,
             setCart,
             isLoading,
             setIsLoading,
         }),
-        [books, setBook, cart, setCart, isLoading, setIsLoading],
+        [books, setBooks, cart, setCart, isLoading, setIsLoading],
     )
     return <BookContext.Provider value={value}>{children}</BookContext.Provider>
 }

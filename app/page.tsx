@@ -6,21 +6,21 @@ import Loader from '@components/loader/Loader'
 import ListBooks from '@components/book/ListBooks'
 import { getBooks } from '@api/getBooks'
 import { useBook } from '@hooks/useBook'
-import Panel from '@components/book/Panel'
+import Panels from '@components/book/Panels'
 
 const HomePage = () => {
-    const { setBook, isLoading, setIsLoading } = useBook()
+    const { setBooks, isLoading, setIsLoading } = useBook()
 
     useEffect(() => {
         setIsLoading(true)
-        getBooks(setBook)
+        getBooks(setBooks)
         setIsLoading(false)
-    }, [setBook, setIsLoading])
+    }, [setBooks, setIsLoading])
 
     return (
         <main>
             {isLoading && <Loader />}
-            <Panel />
+            <Panels />
             <ListBooks />
         </main>
     )

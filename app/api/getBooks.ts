@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { URL_SERVER } from '@app/constants/index'
 import { Book, BookFromServer } from '@app/types'
 
-export const getBooks = (setBook: Dispatch<SetStateAction<Book[]>>) => {
+export const getBooks = (setBooks: Dispatch<SetStateAction<Book[]>>) => {
     const dataFromServer = fetch(URL_SERVER).then((result) => result.json())
 
     const content = dataFromServer
@@ -20,7 +20,8 @@ export const getBooks = (setBook: Dispatch<SetStateAction<Book[]>>) => {
                     count: 0,
                 }
             })
-            setBook(books)
+            setBooks(books)
+            localStorage.setItem('books', JSON.stringify(books))
         })
         .catch((error: string) => {
             console.error(error)
