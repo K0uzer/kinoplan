@@ -7,7 +7,12 @@ import { useBook } from '@app/hooks/useBook'
 
 import styles from './ItemBook.module.css'
 
-const ItemBook = ({ book, position }: { book: Book }) => {
+interface ItemBookProps {
+    book: Book
+    position: 'table' | 'lines'
+}
+
+const ItemBook: React.FC<ItemBookProps> = ({ book, position }) => {
     const { cart, setCart } = useBook()
 
     const filteredArrayCartOnUniqueBook = cart.filter(

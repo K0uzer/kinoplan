@@ -5,7 +5,11 @@ import { useBook } from '@app/hooks/useBook'
 
 import styles from './ListBooks.module.css'
 
-const ListBooks = ({ position }) => {
+interface ListBooksProps {
+    position: 'table' | 'lines'
+}
+
+const ListBooks: React.FC<ListBooksProps> = ({ position }) => {
     const { books } = useBook()
     return (
         <ul

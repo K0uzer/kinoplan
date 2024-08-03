@@ -2,7 +2,11 @@ import React from 'react'
 
 import styles from './Panel.module.css'
 
-const Panels = ({ children }) => {
+interface PanelsProps {
+    children: React.ReactNode
+}
+
+const Panels: React.FC<PanelsProps> = ({ children }) => {
     return <section className={styles.section}>{children}</section>
 }
 
