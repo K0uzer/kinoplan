@@ -17,10 +17,12 @@ const CartPage = () => {
 
     const success = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
+
         messageApi.open({
             type: 'success',
             content: 'Поздравляю с покупкой!',
         })
+
         setCart([])
 
         setTimeout(() => {
