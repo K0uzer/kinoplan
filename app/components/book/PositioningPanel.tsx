@@ -1,11 +1,17 @@
-import React, { MouseEventHandler } from 'react'
+import React from 'react'
 import { TableOutlined, LineOutlined } from '@ant-design/icons'
 
 import Button from '@app/UI/Button'
 
 import styles from './PositioningPanel.module.css'
 
-const PositioningPanel = ({ changePositionOfContent }) => {
+interface PositioningPanelProps {
+    changePositionOfContent: (position: 'table' | 'lines') => void
+}
+
+const PositioningPanel: React.FC<PositioningPanelProps> = ({
+    changePositionOfContent,
+}) => {
     return (
         <div className={styles.containerButtonOfPositioning}>
             <Button
@@ -15,7 +21,7 @@ const PositioningPanel = ({ changePositionOfContent }) => {
                 <TableOutlined />
             </Button>
             <Button
-                event={() => changePositionOfContent('list')}
+                event={() => changePositionOfContent('lines')} // Update 'list' to 'lines'
                 styles={styles.button}
             >
                 <LineOutlined />

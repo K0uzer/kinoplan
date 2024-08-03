@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 
 import Loader from '@components/loader/Loader'
 import ListBooks from '@components/book/ListBooks'
