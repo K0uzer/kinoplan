@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import Loader from '@components/loader/Loader'
 import ListBooks from '@components/book/ListBooks'
@@ -10,19 +10,22 @@ import FiltersPanel from './components/book/FiltersPanels'
 import SortPanel from './components/book/SortPanel'
 import PositioningPanel from './components/book/PositioningPanel'
 
-const initialPosition: 'table' | 'lines' = 'table'
-
 const HomePage = () => {
-    const { setBooks, isLoading, setIsLoading } = useBook()
-
-    const [positionContent, setPositionContent] = useState<'table' | 'lines'>(
-        initialPosition,
-    )
+    const {
+        setBooks,
+        isLoading,
+        setIsLoading,
+        positionContent,
+        setPositionContent,
+    } = useBook()
 
     useEffect(() => {
-        setIsLoading(true)
-        getBooks(setBooks)
-        setIsLoading(false)
+        const fetchBooks = async () => {
+            setIsLoading(true)
+            await getBooks(setBooks)
+            setIsLoading(false)
+        }
+        fetchBooks()
     }, [setBooks, setIsLoading])
 
     return (

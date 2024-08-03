@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 
 import { useBook } from '@app/hooks/useBook'

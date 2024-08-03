@@ -11,6 +11,7 @@ import {
 } from 'react'
 
 import { Book } from '@app/types'
+import { INITIAL_POSITION } from '@app/constants'
 
 export type ContextBookType = {
     books: Book[]
@@ -19,6 +20,8 @@ export type ContextBookType = {
     setCart: Dispatch<SetStateAction<Book[]>>
     isLoading: boolean
     setIsLoading: Dispatch<SetStateAction<boolean>>
+    positionContent: 'table' | 'lines'
+    setPositionContent: Dispatch<SetStateAction<'table' | 'lines'>> // Update type here
 }
 
 export const BookContext = createContext<ContextBookType>({
@@ -28,13 +31,17 @@ export const BookContext = createContext<ContextBookType>({
     setCart: () => {},
     isLoading: false,
     setIsLoading: () => {},
+    positionContent: 'table',
+    setPositionContent: () => {},
 })
 
 const BookContextProvider: FC<PropsWithChildren> = ({ children }) => {
     const [books, setBooks] = useState<Book[]>([])
     const [cart, setCart] = useState<Book[]>([])
     const [isLoading, setIsLoading] = useState(false)
-
+    const [positionContent, setPositionContent] = useState<'table' | 'lines'>(
+        INITIAL_POSITION,
+    )
     const value: ContextBookType = useMemo(
         () => ({
             books,
@@ -43,8 +50,19 @@ const BookContextProvider: FC<PropsWithChildren> = ({ children }) => {
             setCart,
             isLoading,
             setIsLoading,
+            positionContent,
+            setPositionContent,
         }),
-        [books, setBooks, cart, setCart, isLoading, setIsLoading],
+        [
+            books,
+            setBooks,
+            cart,
+            setCart,
+            isLoading,
+            setIsLoading,
+            positionContent,
+            setPositionContent,
+        ],
     )
     return <BookContext.Provider value={value}>{children}</BookContext.Provider>
 }
