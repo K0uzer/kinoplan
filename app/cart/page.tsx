@@ -1,14 +1,14 @@
 'use client'
+import React from 'react'
+import Link from 'next/link'
 
 import CartList from '@app/components/cart/CartList'
-import Link from 'next/link'
-import React from 'react'
-
-import styles from './cart.module.css'
 import { useBook } from '@hooks/useBook'
 
+import styles from './cart.module.css'
+
 const CartPage = () => {
-    const { cart, setCart } = useBook()
+    const { setCart } = useBook()
 
     const payForThePurchase = () => {
         setCart([])

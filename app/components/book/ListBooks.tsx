@@ -5,12 +5,16 @@ import { useBook } from '@app/hooks/useBook'
 
 import styles from './ListBooks.module.css'
 
-const ListBooks = () => {
+const ListBooks = ({ position }) => {
     const { books } = useBook()
     return (
-        <ul className={styles.list}>
+        <ul
+            className={
+                position === 'table' ? styles.listTable : styles.listLines
+            }
+        >
             {books.map((book) => (
-                <ItemBook key={book.id} book={book} />
+                <ItemBook key={book.id} position={position} book={book} />
             ))}
         </ul>
     )

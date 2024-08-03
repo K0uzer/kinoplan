@@ -1,8 +1,15 @@
-.list {
+.listTable {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     text-align: center;
-    gap: 20px;
+    padding: 0;
+    gap: 1rem;
     list-style-type: none;
+}
+
+.listLines {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
 }

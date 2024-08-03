@@ -17,7 +17,9 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 25vw;
+    width: auto;
+    margin-right: 50px;
+    margin: 1rem;
     padding: 15px;
     border: 2px solid var(--list-item-border-color);
     border-radius: 6px;
@@ -29,6 +31,10 @@
         transition: 0.3s ease-out;
         transform: translate(8px, 5px);
     }
+}
+
+.listItemForLine {
+    flex-direction: row;
 }
 
 .titleBook {

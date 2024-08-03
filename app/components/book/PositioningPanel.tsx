@@ -5,23 +5,17 @@ import Button from '@app/UI/Button'
 
 import styles from './PositioningPanel.module.css'
 
-const PositioningPanel = () => {
-    const changeStylesListBooks = (event) => {}
-
+const PositioningPanel = ({ changePositionOfContent }) => {
     return (
         <div className={styles.containerButtonOfPositioning}>
             <Button
-                event={(event: MouseEventHandler<HTMLButtonElement>) =>
-                    changeStylesListBooks(event)
-                }
+                event={() => changePositionOfContent('table')}
                 styles={styles.button}
             >
                 <TableOutlined />
             </Button>
             <Button
-                event={(event: MouseEventHandler<HTMLButtonElement>) =>
-                    changeStylesListBooks(event)
-                }
+                event={() => changePositionOfContent('list')}
                 styles={styles.button}
             >
                 <LineOutlined />

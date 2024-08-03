@@ -7,7 +7,7 @@ import { useBook } from '@app/hooks/useBook'
 
 import styles from './ItemBook.module.css'
 
-const ItemBook = ({ book }: { book: Book }) => {
+const ItemBook = ({ book, position }: { book: Book }) => {
     const { cart, setCart } = useBook()
 
     const filteredArrayCartOnUniqueBook = cart.filter(
@@ -28,7 +28,11 @@ const ItemBook = ({ book }: { book: Book }) => {
     }
 
     return (
-        <li className={styles.listItem}>
+        <li
+            className={`${styles.listItem} ${
+                position !== 'table' && styles.listItemForLine
+            }`}
+        >
             <span className={styles.titleBook}>{book?.title}</span>
             <Image
                 className={styles.imageBook}
