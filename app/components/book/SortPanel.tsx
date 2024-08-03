@@ -4,17 +4,14 @@ import { useBook } from '@app/hooks/useBook'
 
 import styles from './SortPanel.module.css'
 
-const typesSorts = ['Без сортировки', 'Жанр', 'Год', 'Автор']
+const typesSorts = ['Жанр', 'Год', 'Автор']
 
 const SortPanel = () => {
     const { setBooks } = useBook()
 
     const getSortedBooks = (event: React.FormEvent<HTMLFieldSetElement>) => {
-        const key = event.target.value
+        const key = (event.target as HTMLInputElement).value
         switch (key) {
-            case 'Без сортировки':
-                setBooks(JSON.parse(localStorage.getItem('books')))
-                break
             case 'Автор':
                 setBooks((prevState) =>
                     prevState.toSorted((curr, ext) =>
@@ -41,7 +38,12 @@ const SortPanel = () => {
 
     return (
         <fieldset
-            onChange={(event) => getSortedBooks(event)}
+            onChange={(event) => {
+                const target = event.target as HTMLInputElement
+                if (target.name === 'drone') {
+                    getSortedBooks(event)
+                }
+            }}
             className={styles.fieldset}
         >
             <legend>Сортировка</legend>
