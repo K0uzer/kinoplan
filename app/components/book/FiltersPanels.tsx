@@ -6,15 +6,67 @@ import { useBook } from '@app/hooks/useBook'
 import styles from './FiltersPanel.module.css'
 import { Book } from '@app/types'
 
-const initialOptions = {
-    authorsBooks: 'Without filter',
-    publishedDateBooks: 'Without filter',
-    categoriesBooks: 'Without filter',
+enum FilterTypes {
+    AUTHORS = 'authorsBooks',
+    PUBLISHED_DATES = 'publishedDateBooks',
+    CATEGORIES = 'categoriesBooks',
 }
+
+const initialOptions = {
+    [FilterTypes.AUTHORS]: 'Without filter',
+    [FilterTypes.PUBLISHED_DATES]: 'Without filter',
+    [FilterTypes.CATEGORIES]: 'Without filter',
+}
+
+const selectsNames = [
+    FilterTypes.AUTHORS,
+    FilterTypes.PUBLISHED_DATES,
+    FilterTypes.CATEGORIES,
+]
+
+const typesFilters = ['Фильтр по авторам', 'Фильтр по жанру', 'Фильтр по году']
+
+const filterProperties = {
+    [FilterTypes.AUTHORS]: 'author',
+    [FilterTypes.PUBLISHED_DATES]: 'publishedDate',
+    [FilterTypes.CATEGORIES]: 'category',
+}
+
+const booksFromLocalStorage: Book[] =
+    localStorage.getItem('books') !== null
+        ? JSON.parse(localStorage.getItem('books') as string)
+        : []
+
+const filteredArrays = {
+    authors: [...new Set(booksFromLocalStorage.map((item) => item.author))],
+    categories: [
+        ...new Set(booksFromLocalStorage.map((item) => item.category)),
+    ],
+    publishedDates: [
+        ...new Set(
+            booksFromLocalStorage.map((item) => item.publishedDate.slice(0, 4)),
+        ),
+    ].sort(),
+}
+
+const { authors, categories, publishedDates } = filteredArrays
 
 const FiltersPanel = () => {
     const { setBooks } = useBook()
     const [selectedOptions, setSelectedOptions] = useState(initialOptions)
+
+    const changeContent = (key: string, name: string) => {
+        setBooks(
+            key === 'Without filter'
+                ? booksFromLocalStorage
+                : booksFromLocalStorage.filter((item) => {
+                      const property = filterProperties[name]
+                      return property === 'publishedDate'
+                          ? item[property].includes(key)
+                          : item[property] === key
+                  }),
+        )
+    }
 
     const handleSelectChange = (
         event: React.ChangeEvent<HTMLSelectElement>,
@@ -24,135 +76,34 @@ const FiltersPanel = () => {
             ...selectedOptions,
             [name]: value,
         })
-    }
-
-    const booksFromLocalStorage: Book[] =
-        localStorage.getItem('books') !== null
-            ? JSON.parse(localStorage.getItem('books') as string)
-            : []
-
-    const authorsBooksUnique = [
-        ...new Set([...booksFromLocalStorage].map((item) => item.author)),
-    ]
-
-    const categoriesBooksUnique = [
-        ...new Set([...booksFromLocalStorage].map((item) => item.category)),
-    ]
-
-    const publishedDateBooksUnique = [
-        ...new Set(
-            [...booksFromLocalStorage].map((item) =>
-                item.publishedDate.slice(0, -6),
-            ),
-        ),
-    ].sort()
-
-    const getFilteredOfAuthorsBooks = (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        const key = event.target.value
-        if (key === initialOptions.authorsBooks) {
-            setBooks(booksFromLocalStorage)
-        } else {
-            const filteredBooks = booksFromLocalStorage.filter(
-                (item) => item.author === key,
-            )
-            setBooks(filteredBooks)
-        }
-        setSelectedOptions({
-            ...initialOptions,
-            authorsBooks: key,
-        })
-    }
-
-    const getFilteredOfCategoriesBooks = (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        const key = event.target.value
-        if (key === initialOptions.categoriesBooks) {
-            setBooks(booksFromLocalStorage)
-        } else {
-            const filteredBooks = booksFromLocalStorage.filter(
-                (item) => item.category === key,
-            )
-            setBooks(filteredBooks)
-        }
-        setSelectedOptions({
-            ...initialOptions,
-            categoriesBooks: key,
-        })
-    }
-
-    const getFilteredOfPublishedDateBooks = (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        const key = event.target.value
-        if (key === initialOptions.publishedDateBooks) {
-            setBooks(booksFromLocalStorage)
-        } else {
-            const filteredBooks = booksFromLocalStorage.filter((item) =>
-                item.publishedDate.includes(key),
-            )
-            setBooks(filteredBooks)
-        }
-        setSelectedOptions({
-            ...initialOptions,
-            publishedDateBooks: key,
-        })
+        changeContent(value, name)
     }
 
     return (
         <div>
-            <select
-                name="authorsBooks"
-                onChange={(event) => {
-                    handleSelectChange(event)
-                    getFilteredOfAuthorsBooks(event)
-                }}
-                className={styles.select}
-                value={selectedOptions.authorsBooks}
-            >
-                <option value="Without filter">Фильтр по авторам</option>
-                {authorsBooksUnique.map((item, index) => (
-                    <option key={index} value={item}>
-                        {item}
+            {selectsNames.map((select, index) => (
+                <select
+                    key={select}
+                    name={select}
+                    onChange={(event) => handleSelectChange(event)}
+                    className={styles.select}
+                    value={selectedOptions[select]}
+                >
+                    <option value="Without filter">
+                        {typesFilters[index]}
                     </option>
-                ))}
-            </select>
-
-            <select
-                name="publishedDateBooks"
-                onChange={(event) => {
-                    handleSelectChange(event)
-                    getFilteredOfPublishedDateBooks(event)
-                }}
-                className={styles.select}
-                value={selectedOptions.publishedDateBooks}
-            >
-                <option value="Without filter">Фильтр по датам</option>
-                {publishedDateBooksUnique.map((item, index) => (
-                    <option key={index} value={item}>
-                        {item}
-                    </option>
-                ))}
-            </select>
-
-            <select
-                name="categoriesBooks"
-                onChange={(event) => {
-                    handleSelectChange(event)
-                    getFilteredOfCategoriesBooks(event)
-                }}
-                className={styles.select}
-                value={selectedOptions.categoriesBooks}
-            >
-                <option value="Without filter">Фильтр категорий</option>
-                {categoriesBooksUnique.map((item, index) => (
-                    <option key={index} value={item}>
-                        {item}
-                    </option>
-                ))}
-            </select>
+                    {(select === 'authorsBooks'
+                        ? authors
+                        : select === 'publishedDateBooks'
+                        ? publishedDates
+                        : categories
+                    ).map((item) => (
+                        <option key={item} value={item}>
+                            {item}
+                        </option>
+                    ))}
+                </select>
+            ))}
         </div>
     )
 }

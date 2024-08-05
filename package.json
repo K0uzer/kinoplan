@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "antd": "5.18.1",
-        "commitlint": "^19.3.0",
+        "commitlint": "19.3.0",
         "eslint": "8.57.0",
         "eslint-config-next": "14.2.3",
         "module-alias": "2.2.3",
@@ -18,7 +18,7 @@
         "npm": "10.8.1",
         "react": "18.3.1",
         "react-dom": "18.3.1",
-        "sonarqube-scanner": "^4.0.1",
+        "sonarqube-scanner": "4.0.1",
         "typescript": "5.4.5"
     },
     "devDependencies": {
@@ -26,7 +26,7 @@
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
         "eslint-plugin-react-hooks": "4.6.2",
-        "terser-brunch": "^4.1.0"
+        "terser-brunch": "4.1.0"
     },
     "_moduleAliases": {
         "@modules": "dist/rest/modules",

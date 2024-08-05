@@ -7,9 +7,10 @@ import CartList from '@components/cart/CartList'
 import { useBook } from '@app/hooks/useBook'
 
 import styles from './Popover.module.css'
+import { PATH } from '@app/constants'
 
 const Content = () => {
-    const { cart, setCart } = useBook()
+    const { setCart } = useBook()
 
     const clearCart = () => {
         setCart([])
@@ -19,19 +20,10 @@ const Content = () => {
         <div className={styles.cart}>
             <CartList />
             <div className={styles.buttonCartContainer}>
-                <Link href="/cart">
-                    <button
-                        disabled={cart.length > 0 ? false : true}
-                        className={styles.buttonCart}
-                    >
-                        Купить
-                    </button>
+                <Link href={PATH.cart}>
+                    <button className={styles.buttonCart}>Купить</button>
                 </Link>
-                <button
-                    disabled={cart.length > 0 ? false : true}
-                    onClick={clearCart}
-                    className={styles.buttonCart}
-                >
+                <button onClick={clearCart} className={styles.buttonCart}>
                     Отчистить
                 </button>
             </div>

@@ -7,17 +7,14 @@ import CartList from '@app/components/cart/CartList'
 import { useBook } from '@hooks/useBook'
 
 import styles from './page.module.css'
+import { PATH } from '@app/constants'
 
 const CartPage = () => {
     const { setCart } = useBook()
 
     const [messageApi, contextHolder] = message.useMessage()
 
-    const changePath = () => (window.location.href = '/')
-
-    const success = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault()
-
+    const getMessageAboutPurchase = () => {
         messageApi.open({
             type: 'success',
             content: 'Поздравляю с покупкой!',
@@ -26,19 +23,22 @@ const CartPage = () => {
         setCart([])
 
         setTimeout(() => {
-            changePath()
+            window.location.href = PATH.main
         }, 3000)
     }
 
     return (
         <div className={styles.cartWrapper}>
+            {contextHolder}
             <CartList />
             <div className={styles.buttonWrapper}>
-                {contextHolder}
-                <Link href="/">
+                <Link href={PATH.main}>
                     <button className={styles.button}>Вернуться назад</button>
                 </Link>
-                <button onClick={success} className={styles.button}>
+                <button
+                    onClick={getMessageAboutPurchase}
+                    className={styles.button}
+                >
                     Оплатить
                 </button>
             </div>

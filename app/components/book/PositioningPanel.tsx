@@ -15,13 +15,13 @@ const PositioningPanel: React.FC<PositioningPanelProps> = ({
     return (
         <div className={styles.containerButtonOfPositioning}>
             <Button
-                event={() => changePositionOfContent('table')}
+                onClick={() => changePositionOfContent('table')}
                 styles={styles.button}
             >
                 <TableOutlined />
             </Button>
             <Button
-                event={() => changePositionOfContent('lines')} // Update 'list' to 'lines'
+                onClick={() => changePositionOfContent('lines')} // Update 'list' to 'lines'
                 styles={styles.button}
             >
                 <LineOutlined />

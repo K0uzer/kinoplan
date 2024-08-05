@@ -2,15 +2,15 @@ import { MouseEventHandler, ReactNode } from 'react'
 
 const Button = ({
     styles,
-    event,
+    onClick,
     children,
 }: {
     styles: string
-    event: MouseEventHandler<HTMLButtonElement>
+    onClick: MouseEventHandler<HTMLButtonElement>
     children: ReactNode
 }) => {
     return (
-        <button onClick={event} className={styles}>
+        <button onClick={onClick} className={styles}>
             {children}
         </button>
     )
