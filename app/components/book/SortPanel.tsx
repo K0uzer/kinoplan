@@ -10,40 +10,37 @@ const SortPanel = () => {
     const { setBooks } = useBook()
 
     const getSortedBooks = (event: React.FormEvent<HTMLFieldSetElement>) => {
-        const key = (event.target as HTMLInputElement).value
-        switch (key) {
-            case 'Автор':
-                setBooks((prevState) =>
-                    prevState.toSorted((curr, ext) =>
-                        curr.author.localeCompare(ext.author),
-                    ),
-                )
-                break
-            case 'Жанр':
-                setBooks((prevState) =>
-                    prevState.toSorted((curr, ext) =>
-                        curr.category.localeCompare(ext.category),
-                    ),
-                )
-                break
-            case 'Год':
-                setBooks((prevState) =>
-                    prevState.toSorted((curr, ext) =>
-                        curr.publishedDate.localeCompare(ext.publishedDate),
-                    ),
-                )
-                break
+        if (event.target.value === 'drone') {
+            const key = (event.target as HTMLInputElement).value
+            switch (key) {
+                case 'Автор':
+                    setBooks((prevState) =>
+                        prevState.toSorted((curr, ext) =>
+                            curr.author.localeCompare(ext.author),
+                        ),
+                    )
+                    break
+                case 'Жанр':
+                    setBooks((prevState) =>
+                        prevState.toSorted((curr, ext) =>
+                            curr.category.localeCompare(ext.category),
+                        ),
+                    )
+                    break
+                case 'Год':
+                    setBooks((prevState) =>
+                        prevState.toSorted((curr, ext) =>
+                            curr.publishedDate.localeCompare(ext.publishedDate),
+                        ),
+                    )
+                    break
+            }
         }
     }
 
     return (
         <fieldset
-            onChange={(event) => {
-                const target = event.target as HTMLInputElement
-                if (target.name === 'drone') {
-                    getSortedBooks(event)
-                }
-            }}
+            onChange={(event) => getSortedBooks(event)}
             className={styles.fieldset}
         >
             <legend>Сортировка</legend>

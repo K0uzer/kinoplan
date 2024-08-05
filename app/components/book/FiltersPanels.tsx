@@ -2,9 +2,9 @@
 import React, { useState } from 'react'
 
 import { useBook } from '@app/hooks/useBook'
+import { Book } from '@app/types'
 
 import styles from './FiltersPanel.module.css'
-import { Book } from '@app/types'
 
 enum FilterTypes {
     AUTHORS = 'authorsBooks',
@@ -24,7 +24,7 @@ const selectsNames = [
     FilterTypes.CATEGORIES,
 ]
 
-const typesFilters = ['Фильтр по авторам', 'Фильтр по жанру', 'Фильтр по году']
+const filters = ['Фильтр по авторам', 'Фильтр по жанру', 'Фильтр по году']
 
 const filterProperties = {
     [FilterTypes.AUTHORS]: 'author',
@@ -89,9 +89,7 @@ const FiltersPanel = () => {
                     className={styles.select}
                     value={selectedOptions[select]}
                 >
-                    <option value="Without filter">
-                        {typesFilters[index]}
-                    </option>
+                    <option value="Without filter">{filters[index]}</option>
                     {(select === 'authorsBooks'
                         ? authors
                         : select === 'publishedDateBooks'

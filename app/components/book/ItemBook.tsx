@@ -9,10 +9,10 @@ import styles from './ItemBook.module.css'
 
 interface ItemBookProps {
     book: Book
-    position: 'table' | 'lines'
+    view: 'table' | 'lines'
 }
 
-const ItemBook: React.FC<ItemBookProps> = ({ book, position }) => {
+const ItemBook: React.FC<ItemBookProps> = ({ book, view }) => {
     const { cart, setCart } = useBook()
 
     const filteredArrayCartOnUniqueBook = cart.filter(
@@ -35,7 +35,7 @@ const ItemBook: React.FC<ItemBookProps> = ({ book, position }) => {
     return (
         <li
             className={`${styles.listItem} ${
-                position !== 'table' && styles.listItemForLine
+                view !== 'table' && styles.listItemForLine
             }`}
         >
             <span className={styles.titleBook}>{book?.title}</span>
