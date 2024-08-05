@@ -12,8 +12,6 @@ const initialOptions = {
     categoriesBooks: 'Without filter',
 }
 
-type OptionType = typeof initialOptions
-
 const FiltersPanel = () => {
     const { setBooks } = useBook()
     const [selectedOptions, setSelectedOptions] = useState(initialOptions)

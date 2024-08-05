@@ -18,15 +18,12 @@ const HomePage = () => {
         positionContent,
         setPositionContent,
     } = useBook()
-
+    console.log('render page')
     useEffect(() => {
-        const fetchBooks = async () => {
-            setIsLoading(true)
-            await getBooks(setBooks)
-            setIsLoading(false)
-        }
-        fetchBooks()
-    }, [setBooks, setIsLoading])
+        setIsLoading(true)
+        getBooks(setBooks)
+        setIsLoading(false)
+    }, [setBooks])
 
     return (
         <main>
