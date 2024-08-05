@@ -18,7 +18,7 @@ const HomePage = () => {
         positionContent,
         setPositionContent,
     } = useBook()
-    console.log('render page')
+
     useEffect(() => {
         setIsLoading(true)
         getBooks(setBooks)

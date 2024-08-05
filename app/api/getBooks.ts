@@ -5,7 +5,7 @@ import { Book, BookFromServer } from '@app/types'
 
 export const getBooks = (setBooks: Dispatch<SetStateAction<Book[]>>) => {
     const dataFromServer = fetch(URL_SERVER).then((result) => result.json())
-    console.log(dataFromServer)
+
     const content = dataFromServer
         .then((result: { items: BookFromServer[] }) => {
             const books = result?.items.map((item: BookFromServer) => {
@@ -22,7 +22,6 @@ export const getBooks = (setBooks: Dispatch<SetStateAction<Book[]>>) => {
             })
             setBooks(books)
             localStorage.setItem('books', JSON.stringify(books))
-            console.log('отработал getBooks')
         })
         .catch((error: string) => {
             console.error(error)
