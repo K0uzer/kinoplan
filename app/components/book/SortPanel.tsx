@@ -3,39 +3,25 @@ import React from 'react'
 import { useBook } from '@app/hooks/useBook'
 
 import styles from './SortPanel.module.css'
+import { Book } from '@app/types'
 
-const typesSorts = ['Жанр', 'Год', 'Автор']
+const sortByProperties: Record<string, string> = {
+    Автор: 'author',
+    Жанр: 'category',
+    Год: 'publishedDate',
+}
 
 const SortPanel = () => {
     const { setBooks } = useBook()
 
     const getSortedBooks = (event: React.FormEvent<HTMLFieldSetElement>) => {
-        if (event.target.value === 'drone') {
-            const key = (event.target as HTMLInputElement).value
-            switch (key) {
-                case 'Автор':
-                    setBooks((prevState) =>
-                        prevState.toSorted((curr, ext) =>
-                            curr.author.localeCompare(ext.author),
-                        ),
-                    )
-                    break
-                case 'Жанр':
-                    setBooks((prevState) =>
-                        prevState.toSorted((curr, ext) =>
-                            curr.category.localeCompare(ext.category),
-                        ),
-                    )
-                    break
-                case 'Год':
-                    setBooks((prevState) =>
-                        prevState.toSorted((curr, ext) =>
-                            curr.publishedDate.localeCompare(ext.publishedDate),
-                        ),
-                    )
-                    break
-            }
-        }
+        const key = (event.target as HTMLInputElement).value
+        const sorty = sortByProperties[key]
+        setBooks((prevState: Book[]) =>
+            prevState.toSorted((curr, ext) =>
+                curr[sorty].localeCompare(ext[sorty]),
+            ),
+        )
     }
 
     return (
@@ -44,7 +30,7 @@ const SortPanel = () => {
             className={styles.fieldset}
         >
             <legend>Сортировка</legend>
-            {typesSorts.map((item, index) => (
+            {Object.keys(sortByProperties).map((item, index) => (
                 <div className={styles.blockRadio} key={index}>
                     <input type="radio" id={item} name="drone" value={item} />
                     <label htmlFor={item}>{item}</label>

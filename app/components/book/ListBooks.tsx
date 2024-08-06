@@ -12,11 +12,7 @@ interface ListBooksProps {
 const ListBooks: React.FC<ListBooksProps> = ({ view }) => {
     const { books } = useBook()
     return (
-        <ul
-            className={
-                view === 'table' ? styles.listTable : styles.listLines
-            }
-        >
+        <ul className={view === 'table' ? styles.listTable : styles.listLines}>
             {books.map((book) => (
                 <ItemBook key={book.id} view={view} book={book} />
             ))}

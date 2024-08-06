@@ -5,6 +5,8 @@ import CartItem from './CartItem'
 
 const CartList = () => {
     const { cart } = useBook()
+    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'))
+    console.log(cartFromLocalStorage)
     return (
         <>
             {!cart.length ? (

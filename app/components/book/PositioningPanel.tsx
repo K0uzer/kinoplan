@@ -10,22 +10,26 @@ interface PositioningPanelProps {
 }
 
 const PositioningPanel: React.FC<PositioningPanelProps> = ({
+    positionContent,
     changePositionOfContent,
 }) => {
     return (
         <div className={styles.containerButtonOfPositioning}>
-            <Button
-                onClick={() => changePositionOfContent('table')}
-                styles={styles.button}
-            >
-                <TableOutlined />
-            </Button>
-            <Button
-                onClick={() => changePositionOfContent('lines')} // Update 'list' to 'lines'
-                styles={styles.button}
-            >
-                <LineOutlined />
-            </Button>
+            {positionContent === 'lines' ? (
+                <Button
+                    onClick={() => changePositionOfContent('table')}
+                    styles={styles.button}
+                >
+                    <TableOutlined />
+                </Button>
+            ) : (
+                <Button
+                    onClick={() => changePositionOfContent('lines')}
+                    styles={styles.button}
+                >
+                    <LineOutlined />
+                </Button>
+            )}
         </div>
     )
 }

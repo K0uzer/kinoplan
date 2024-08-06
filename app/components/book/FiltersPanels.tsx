@@ -55,17 +55,21 @@ const FiltersPanel = () => {
     const { setBooks } = useBook()
     const [selectedOptions, setSelectedOptions] = useState(initialOptions)
 
-    const changeContent = (key: string, name: string) => {
+    const changeContent = (value: string, name: string) => {
         setBooks(
-            key === 'Without filter'
+            value === 'Without filter'
                 ? booksFromLocalStorage
                 : booksFromLocalStorage.filter((item) => {
                       const property = filterProperties[name]
                       return property === 'publishedDate'
-                          ? item[property].includes(key)
-                          : item[property] === key
+                          ? item[property].includes(value)
+                          : item[property] === value
                   }),
         )
+        setSelectedOptions({
+            ...initialOptions,
+            [name]: value,
+        })
     }
 
     const handleSelectChange = (

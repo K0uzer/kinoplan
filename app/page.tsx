@@ -33,9 +33,10 @@ const HomePage = () => {
                 <FiltersPanel />
                 <PositioningPanel
                     changePositionOfContent={setPositionContent}
+                    positionContent={positionContent}
                 />
             </Panels>
-            <ListBooks position={positionContent} />
+            <ListBooks view={positionContent} />
         </main>
     )
 }
