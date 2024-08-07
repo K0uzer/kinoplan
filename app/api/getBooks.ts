@@ -21,7 +21,6 @@ export const getBooks = (setBooks: Dispatch<SetStateAction<Book[]>>) => {
                 }
             })
             setBooks(books)
-            localStorage.setItem('books', JSON.stringify(books))
         })
         .catch((error: string) => {
             console.error(error)

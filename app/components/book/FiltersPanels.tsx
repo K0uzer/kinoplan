@@ -3,34 +3,14 @@ import React, { useState } from 'react'
 
 import { useBook } from '@app/hooks/useBook'
 import { Book } from '@app/types'
+import {
+    INITIAL_OPTIONS_FILTERS,
+    KIND_FILTER_PROPERTIES,
+    KIND_OF_BOOKS_FILTER,
+    TITLE_SELECTS_OF_FILTER,
+} from '@app/constants'
 
 import styles from './FiltersPanel.module.css'
-
-enum FilterTypes {
-    AUTHORS = 'authorsBooks',
-    PUBLISHED_DATES = 'publishedDateBooks',
-    CATEGORIES = 'categoriesBooks',
-}
-
-const initialOptions = {
-    [FilterTypes.AUTHORS]: 'Without filter',
-    [FilterTypes.PUBLISHED_DATES]: 'Without filter',
-    [FilterTypes.CATEGORIES]: 'Without filter',
-}
-
-const selectsNames = [
-    FilterTypes.AUTHORS,
-    FilterTypes.PUBLISHED_DATES,
-    FilterTypes.CATEGORIES,
-]
-
-const filters = ['Фильтр по авторам', 'Фильтр по жанру', 'Фильтр по году']
-
-const filterProperties = {
-    [FilterTypes.AUTHORS]: 'author',
-    [FilterTypes.PUBLISHED_DATES]: 'publishedDate',
-    [FilterTypes.CATEGORIES]: 'category',
-}
 
 const booksFromLocalStorage: Book[] =
     localStorage.getItem('books') !== null
@@ -53,21 +33,23 @@ const { authors, categories, publishedDates } = filteredArrays
 
 const FiltersPanel = () => {
     const { setBooks } = useBook()
-    const [selectedOptions, setSelectedOptions] = useState(initialOptions)
+    const [selectedOptions, setSelectedOptions] = useState(
+        INITIAL_OPTIONS_FILTERS,
+    )
 
     const changeContent = (value: string, name: string) => {
         setBooks(
             value === 'Without filter'
                 ? booksFromLocalStorage
                 : booksFromLocalStorage.filter((item) => {
-                      const property = filterProperties[name]
+                      const property = KIND_FILTER_PROPERTIES[name]
                       return property === 'publishedDate'
                           ? item[property].includes(value)
                           : item[property] === value
                   }),
         )
         setSelectedOptions({
-            ...initialOptions,
+            ...INITIAL_OPTIONS_FILTERS,
             [name]: value,
         })
     }
@@ -85,7 +67,7 @@ const FiltersPanel = () => {
 
     return (
         <div>
-            {selectsNames.map((select, index) => (
+            {TITLE_SELECTS_OF_FILTER.map((select, index) => (
                 <select
                     key={select}
                     name={select}
@@ -93,7 +75,13 @@ const FiltersPanel = () => {
                     className={styles.select}
                     value={selectedOptions[select]}
                 >
-                    <option value="Without filter">{filters[index]}</option>
+                    <option value="Without filter">
+                        {
+                            KIND_OF_BOOKS_FILTER[
+                                Object.keys(KIND_OF_BOOKS_FILTER)[index]
+                            ]
+                        }
+                    </option>
                     {(select === 'authorsBooks'
                         ? authors
                         : select === 'publishedDateBooks'

@@ -14,6 +14,7 @@ const Content = () => {
 
     const clearCart = () => {
         setCart([])
+        clearLocalStorageOfCart()
     }
 
     return (

@@ -15,8 +15,6 @@ interface ItemBookProps {
 const ItemBook: React.FC<ItemBookProps> = ({ book, view }) => {
     const { cart, setCart } = useBook()
 
-    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'))
-
     const filteredArrayCartOnUniqueBook = cart.filter(
         (element) => element.title === book.title,
     ).length
@@ -26,24 +24,14 @@ const ItemBook: React.FC<ItemBookProps> = ({ book, view }) => {
             ...prevState,
             { ...book, count: book.count + 1 },
         ])
-        localStorage.setItem(
-            'cart',
-            JSON.stringify([...cartFromLocalStorage, book]),
-        )
+
     }
 
     const deleteBooksFromCart = () => {
         setCart((prevState) =>
             prevState.filter((item) => item.title !== book.title),
         )
-        localStorage.setItem(
-            'cart',
-            JSON.stringify(
-                [...cartFromLocalStorage].filter(
-                    (item) => item.title !== book.title,
-                ),
-            ),
-        )
+
     }
 
     return (

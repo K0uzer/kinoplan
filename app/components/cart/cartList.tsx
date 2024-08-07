@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useBook } from '@app/hooks/useBook'
 import CartItem from './CartItem'
+import { useLocalStorage } from '@app/hooks/useLocalStorage'
+import { KINDS_KEYS_LOCAL_STORAGE } from '@app/constants'
 
 const CartList = () => {
-    const { cart } = useBook()
-    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart'))
-    console.log(cartFromLocalStorage)
+    const { cart, setCart } = useBook()
+    const { getLocalStorage } = useLocalStorage()
+
+    const cartFromLocalStorage = getLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART)
+
+    useEffect(() => {
+        if (cartFromLocalStorage.length) {
+            setCart(cartFromLocalStorage)
+        }
+        console.log(cartFromLocalStorage)
+    }, [])
+
     return (
         <>
             {!cart.length ? (
