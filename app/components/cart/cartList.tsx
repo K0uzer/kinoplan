@@ -12,7 +12,7 @@ const CartList = () => {
     const cartFromLocalStorage = getLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART)
 
     useEffect(() => {
-        if (cartFromLocalStorage.length) {
+        if (cartFromLocalStorage?.length) {
             setCart(cartFromLocalStorage)
         }
         console.log(cartFromLocalStorage)

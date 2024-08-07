@@ -4,8 +4,10 @@ import Image from 'next/image'
 import plugForImage from '@public/plug.png'
 import { Book } from '@app/types'
 import { useBook } from '@app/hooks/useBook'
+import { useLocalStorage } from '@app/hooks/useLocalStorage'
 
 import styles from './ItemBook.module.css'
+import { KINDS_KEYS_LOCAL_STORAGE } from '@app/constants'
 
 interface ItemBookProps {
     book: Book
@@ -14,24 +16,25 @@ interface ItemBookProps {
 
 const ItemBook: React.FC<ItemBookProps> = ({ book, view }) => {
     const { cart, setCart } = useBook()
+    const { changeLocalStorage } = useLocalStorage()
 
     const filteredArrayCartOnUniqueBook = cart.filter(
         (element) => element.title === book.title,
     ).length
 
-    const addBooksInCart = () => {
+    const addBooks = () => {
         setCart((prevState) => [
             ...prevState,
             { ...book, count: book.count + 1 },
         ])
-
+        changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, cart)
     }
 
-    const deleteBooksFromCart = () => {
+    const deleteBooks = () => {
         setCart((prevState) =>
             prevState.filter((item) => item.title !== book.title),
         )
-
+        changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, cart)
     }
 
     return (
@@ -55,14 +58,11 @@ const ItemBook: React.FC<ItemBookProps> = ({ book, view }) => {
             <span className={styles.category}>Категория:{book?.category}</span>
 
             {!filteredArrayCartOnUniqueBook ? (
-                <button onClick={addBooksInCart} className={styles.buttonAdd}>
+                <button onClick={addBooks} className={styles.buttonAdd}>
                     Добавить в корзину
                 </button>
             ) : (
-                <button
-                    onClick={deleteBooksFromCart}
-                    className={styles.buttonAdd}
-                >
+                <button onClick={deleteBooks} className={styles.buttonAdd}>
                     Убрать из корзины
                 </button>
             )}

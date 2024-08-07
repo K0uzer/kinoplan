@@ -3,18 +3,20 @@ import React from 'react'
 import Link from 'next/link'
 import { Popover } from 'antd'
 
-import CartList from '@components/cart/CartList'
+import CartList from '@app/components/cart/CartList'
 import { useBook } from '@app/hooks/useBook'
 
 import styles from './Popover.module.css'
-import { PATH } from '@app/constants'
+import { KINDS_KEYS_LOCAL_STORAGE, PATH } from '@app/constants'
+import { useLocalStorage } from '@app/hooks/useLocalStorage'
 
 const Content = () => {
     const { setCart } = useBook()
+    const { changeLocalStorage } = useLocalStorage()
 
     const clearCart = () => {
         setCart([])
-        clearLocalStorageOfCart()
+        changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, [])
     }
 
     return (
@@ -41,3 +43,6 @@ const Cart = () => {
 }
 
 export default Cart
+function clearLocalStorageOfCart() {
+    throw new Error('Function not implemented.')
+}
