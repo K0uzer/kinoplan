@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import { message } from 'antd'
 
-import CartList from '@app/components/cart/CartList'
+import CartList from '@app/components/cart/СartList'
 import { useBook } from '@hooks/useBook'
 
 import styles from './page.module.css'

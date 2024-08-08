@@ -23,18 +23,21 @@ const ItemBook: React.FC<ItemBookProps> = ({ book, view }) => {
     ).length
 
     const addBooks = () => {
-        setCart((prevState) => [
-            ...prevState,
-            { ...book, count: book.count + 1 },
-        ])
-        changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, cart)
+        setCart((prevState) => {
+            const newState = [...prevState, { ...book, count: book.count + 1 }]
+            changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, newState)
+            return newState
+        })
     }
 
     const deleteBooks = () => {
-        setCart((prevState) =>
-            prevState.filter((item) => item.title !== book.title),
-        )
-        changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, cart)
+        setCart((prevState) => {
+            const newState = prevState.filter(
+                (item) => item.title !== book.title,
+            )
+            changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, newState)
+            return newState
+        })
     }
 
     return (

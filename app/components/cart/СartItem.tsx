@@ -40,8 +40,8 @@ const CartItem = ({ book }: { book: Book }) => {
         const updatedCart = cart.filter(
             (element) => element.title !== book.title,
         )
-        if (quantityBooks > 1) {
-            updatedCart.push({ ...book, count: quantityBooks - 1 })
+        if (quantityBooks) {
+            updatedCart.push({ ...book, count: book.count - 1 })
         }
         setCart(updatedCart)
         changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, updatedCart)

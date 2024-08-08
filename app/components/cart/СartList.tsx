@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { useBook } from '@app/hooks/useBook'
-import CartItem from './CartItem'
+import CartItem from './СartItem'
 import { useLocalStorage } from '@app/hooks/useLocalStorage'
 import { KINDS_KEYS_LOCAL_STORAGE } from '@app/constants'
 
