@@ -2,10 +2,10 @@ import React from 'react'
 
 import { Book } from '@app/types'
 import { useBook } from '@app/hooks/useBook'
-
-import styles from './CartItem.module.css'
 import { KINDS_KEYS_LOCAL_STORAGE } from '@app/constants'
 import { useLocalStorage } from '@app/hooks/useLocalStorage'
+
+import styles from './CartItem.module.css'
 
 const CartItem = ({ book }: { book: Book }) => {
     const { cart, setCart } = useBook()

@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { useBook } from '@app/hooks/useBook'
+import { Book } from '@app/types'
 
 import styles from './SortPanel.module.css'
-import { Book } from '@app/types'
 
 const sortByProperties: Record<string, keyof Book> = {
     Автор: 'author',

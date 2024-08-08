@@ -1,10 +1,10 @@
 import React from 'react'
 
-import styles from './Panel.module.css'
 import SortPanel from './SortPanel'
 import FiltersPanel from './FiltersPanels'
 import PositioningPanel from './PositioningPanel'
-import { useBook } from '@app/hooks/useBook'
+
+import styles from './Panel.module.css'
 
 const Panels = () => {
     return (

@@ -2,9 +2,9 @@ import React from 'react'
 import { TableOutlined, LineOutlined } from '@ant-design/icons'
 
 import Button from '@app/UI/Button'
+import { useBook } from '@app/hooks/useBook'
 
 import styles from './PositioningPanel.module.css'
-import { useBook } from '@app/hooks/useBook'
 
 const PositioningPanel = () => {
     const { positionContent, setPositionContent } = useBook()

@@ -5,9 +5,9 @@ import plugForImage from '@public/plug.png'
 import { Book } from '@app/types'
 import { useBook } from '@app/hooks/useBook'
 import { useLocalStorage } from '@app/hooks/useLocalStorage'
+import { KINDS_KEYS_LOCAL_STORAGE } from '@app/constants'
 
 import styles from './ItemBook.module.css'
-import { KINDS_KEYS_LOCAL_STORAGE } from '@app/constants'
 
 interface ItemBookProps {
     book: Book

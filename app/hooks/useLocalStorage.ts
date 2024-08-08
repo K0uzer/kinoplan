@@ -1,10 +1,3 @@
-export type JSONValue =
-    | string
-    | number
-    | boolean
-    | { [key: string]: JSONValue }
-    | JSONValue[]
-
 export const useLocalStorage = () => {
     const getLocalStorage = (key: string) => {
         return JSON.parse(localStorage.getItem(key) as string)

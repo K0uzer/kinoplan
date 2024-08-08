@@ -6,9 +6,6 @@ import ListBooks from '@components/book/ListBooks'
 import { getBooks } from '@api/getBooks'
 import { useBook } from '@hooks/useBook'
 import Panels from '@components/book/Panels'
-import FiltersPanel from './components/book/FiltersPanels'
-import SortPanel from './components/book/SortPanel'
-import PositioningPanel from './components/book/PositioningPanel'
 
 const HomePage = () => {
     const { setBooks, isLoading, setIsLoading, positionContent } = useBook()

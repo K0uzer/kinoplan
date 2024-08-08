@@ -5,10 +5,10 @@ import { message } from 'antd'
 
 import CartList from '@app/components/cart/СartList'
 import { useBook } from '@hooks/useBook'
-
-import styles from './page.module.css'
 import { KINDS_KEYS_LOCAL_STORAGE, PATH } from '@app/constants'
 import { useLocalStorage } from '@app/hooks/useLocalStorage'
+
+import styles from './page.module.css'
 
 const CartPage = () => {
     const { setCart } = useBook()

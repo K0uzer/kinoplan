@@ -5,10 +5,10 @@ import { Popover } from 'antd'
 
 import CartList from '@app/components/cart/СartList'
 import { useBook } from '@app/hooks/useBook'
-
-import styles from './Popover.module.css'
 import { KINDS_KEYS_LOCAL_STORAGE, PATH } from '@app/constants'
 import { useLocalStorage } from '@app/hooks/useLocalStorage'
+
+import styles from './Popover.module.css'
 
 const Content = () => {
     const { setCart } = useBook()
