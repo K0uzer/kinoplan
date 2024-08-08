@@ -11,31 +11,18 @@ import SortPanel from './components/book/SortPanel'
 import PositioningPanel from './components/book/PositioningPanel'
 
 const HomePage = () => {
-    const {
-        setBooks,
-        isLoading,
-        setIsLoading,
-        positionContent,
-        setPositionContent,
-    } = useBook()
+    const { setBooks, isLoading, setIsLoading, positionContent } = useBook()
 
     useEffect(() => {
         setIsLoading(true)
         getBooks(setBooks)
         setIsLoading(false)
-    }, [setBooks])
+    }, [setBooks, setIsLoading])
 
     return (
         <main>
             {isLoading && <Loader />}
-            <Panels>
-                <SortPanel />
-                <FiltersPanel />
-                <PositioningPanel
-                    changePositionOfContent={setPositionContent}
-                    positionContent={positionContent}
-                />
-            </Panels>
+            <Panels />
             <ListBooks view={positionContent} />
         </main>
     )

@@ -5,7 +5,7 @@ import { useBook } from '@app/hooks/useBook'
 import styles from './SortPanel.module.css'
 import { Book } from '@app/types'
 
-const sortByProperties: Record<string, string> = {
+const sortByProperties: Record<string, keyof Book> = {
     Автор: 'author',
     Жанр: 'category',
     Год: 'publishedDate',

@@ -39,9 +39,7 @@ const BookContextProvider: FC<PropsWithChildren> = ({ children }) => {
     const [books, setBooks] = useState<Book[]>([])
     const [cart, setCart] = useState<Book[]>([])
     const [isLoading, setIsLoading] = useState(false)
-    const [positionContent, setPositionContent] = useState<'table' | 'lines'>(
-        INITIAL_POSITION,
-    )
+    const [positionContent, setPositionContent] = useState(INITIAL_POSITION)
     const value: ContextBookType = useMemo(
         () => ({
             books,

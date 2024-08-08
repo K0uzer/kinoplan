@@ -1,4 +1,3 @@
-'use client'
 import React, { useState } from 'react'
 
 import { useBook } from '@app/hooks/useBook'
@@ -6,11 +5,14 @@ import { Book } from '@app/types'
 import {
     INITIAL_OPTIONS_FILTERS,
     KIND_FILTER_PROPERTIES,
-    KIND_OF_BOOKS_FILTER,
     TITLE_SELECTS_OF_FILTER,
 } from '@app/constants'
 
 import styles from './FiltersPanel.module.css'
+
+interface FilterProperties {
+    [key: string]: keyof Book
+}
 
 const booksFromLocalStorage: Book[] =
     localStorage.getItem('books') !== null
@@ -38,15 +40,15 @@ const FiltersPanel = () => {
     )
 
     const changeContent = (value: string, name: string) => {
+        const property = (KIND_FILTER_PROPERTIES as FilterProperties)[name]
         setBooks(
             value === 'Without filter'
                 ? booksFromLocalStorage
                 : booksFromLocalStorage.filter((item) => {
-                      const property = KIND_FILTER_PROPERTIES[name]
-                      return property === 'publishedDate'
-                          ? item[property].includes(value)
-                          : item[property] === value
-                  }),
+                        return property === 'publishedDate'
+                            ? item[property].includes(value)
+                            : item[property] === value
+                    }),
         )
         setSelectedOptions({
             ...INITIAL_OPTIONS_FILTERS,
@@ -67,7 +69,7 @@ const FiltersPanel = () => {
 
     return (
         <div>
-            {TITLE_SELECTS_OF_FILTER.map((select, index) => (
+            {TITLE_SELECTS_OF_FILTER.map((select) => (
                 <select
                     key={select}
                     name={select}
@@ -76,11 +78,11 @@ const FiltersPanel = () => {
                     value={selectedOptions[select]}
                 >
                     <option value="Without filter">
-                        {
-                            KIND_OF_BOOKS_FILTER[
-                                Object.keys(KIND_OF_BOOKS_FILTER)[index]
-                            ]
-                        }
+                        {select === 'authorsBooks'
+                            ? 'Фильтр по автору'
+                            : select === 'publishedDateBooks'
+                            ? 'Фильтр по дате публикации'
+                            : 'Фильтр по категории'}
                     </option>
                     {(select === 'authorsBooks'
                         ? authors

@@ -4,27 +4,22 @@ import { TableOutlined, LineOutlined } from '@ant-design/icons'
 import Button from '@app/UI/Button'
 
 import styles from './PositioningPanel.module.css'
+import { useBook } from '@app/hooks/useBook'
 
-interface PositioningPanelProps {
-    changePositionOfContent: (position: 'table' | 'lines') => void
-}
-
-const PositioningPanel: React.FC<PositioningPanelProps> = ({
-    positionContent,
-    changePositionOfContent,
-}) => {
+const PositioningPanel = () => {
+    const { positionContent, setPositionContent } = useBook()
     return (
         <div className={styles.containerButtonOfPositioning}>
             {positionContent === 'lines' ? (
                 <Button
-                    onClick={() => changePositionOfContent('table')}
+                    onClick={() => setPositionContent('table')}
                     styles={styles.button}
                 >
                     <TableOutlined />
                 </Button>
             ) : (
                 <Button
-                    onClick={() => changePositionOfContent('lines')}
+                    onClick={() => setPositionContent('lines')}
                     styles={styles.button}
                 >
                     <LineOutlined />
