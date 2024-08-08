@@ -7,12 +7,14 @@ import CartList from '@app/components/cart/СartList'
 import { useBook } from '@hooks/useBook'
 
 import styles from './page.module.css'
-import { PATH } from '@app/constants'
+import { KINDS_KEYS_LOCAL_STORAGE, PATH } from '@app/constants'
+import { useLocalStorage } from '@app/hooks/useLocalStorage'
 
 const CartPage = () => {
     const { setCart } = useBook()
 
     const [messageApi, contextHolder] = message.useMessage()
+    const { changeLocalStorage } = useLocalStorage()
 
     const getMessageAboutPurchase = () => {
         messageApi.open({
@@ -21,6 +23,8 @@ const CartPage = () => {
         })
 
         setCart([])
+
+        changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, [])
 
         setTimeout(() => {
             window.location.href = PATH.main
