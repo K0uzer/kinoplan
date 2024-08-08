@@ -15,6 +15,8 @@ const CartItem = ({ book }: { book: Book }) => {
         KINDS_KEYS_LOCAL_STORAGE.CART,
     )
 
+    const filterCart = cart.filter((item) => item.title !== book.title)
+
     const quantityBooks = cart.map(
         (element) => element.title === book.title && element.count,
     )
@@ -37,14 +39,23 @@ const CartItem = ({ book }: { book: Book }) => {
     }
 
     const decrementQuantity = () => {
-        const updatedCart = cart.filter(
-            (element) => element.title !== book.title,
-        )
-        if (quantityBooks) {
-            updatedCart.push({ ...book, count: book.count - 1 })
+        console.log(cartFromLocalStorage)
+        console.log(cart)
+        console.log(book.count)
+        if (!book.count) {
+            setCart(() => {
+                changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, filterCart)
+                return filterCart
+            })
+        } else {
+            setCart(() => {
+                changeLocalStorage(
+                    KINDS_KEYS_LOCAL_STORAGE.CART,
+                    decrementCount,
+                )
+                return decrementCount
+            })
         }
-        setCart(updatedCart)
-        changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, updatedCart)
     }
 
     return (
