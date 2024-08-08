@@ -17,7 +17,7 @@ const SortPanel = () => {
     const getSortedBooks = (event: React.FormEvent<HTMLFieldSetElement>) => {
         const key = (event.target as HTMLInputElement).value
         const sorty = sortByProperties[key]
-        setBooks((prevState: Book[]) =>
+        setBooks((prevState) =>
             prevState.toSorted((curr, ext) =>
                 curr[sorty].localeCompare(ext[sorty]),
             ),

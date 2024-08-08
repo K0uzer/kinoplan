@@ -15,7 +15,6 @@ const CartList = () => {
         if (cartFromLocalStorage?.length) {
             setCart(cartFromLocalStorage)
         }
-        console.log(cartFromLocalStorage)
     }, [])
 
     return (

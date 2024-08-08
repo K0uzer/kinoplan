@@ -9,11 +9,7 @@ import styles from './CartItem.module.css'
 
 const CartItem = ({ book }: { book: Book }) => {
     const { cart, setCart } = useBook()
-    const { changeLocalStorage, getLocalStorage } = useLocalStorage()
-
-    const cartFromLocalStorage: Book[] = getLocalStorage(
-        KINDS_KEYS_LOCAL_STORAGE.CART,
-    )
+    const { changeLocalStorage } = useLocalStorage()
 
     const filterCart = cart.filter((item) => item.title !== book.title)
 
@@ -39,9 +35,6 @@ const CartItem = ({ book }: { book: Book }) => {
     }
 
     const decrementQuantity = () => {
-        console.log(cartFromLocalStorage)
-        console.log(cart)
-        console.log(book.count)
         if (!book.count) {
             setCart(() => {
                 changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, filterCart)
