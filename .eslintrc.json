@@ -58,7 +58,6 @@
         "no-lone-blocks": "error",
         "no-multi-str": "error",
         "no-script-url": "error",
-        "no-shadow": "error",
         "no-shadow-restricted-names": "error",
         "no-undef-init": "error",
         "no-underscore-dangle": "error",

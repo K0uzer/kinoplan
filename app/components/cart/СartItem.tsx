@@ -2,11 +2,16 @@ import React from 'react'
 
 import { Book } from '@app/types'
 import { useBook } from '@app/hooks/useBook'
+import { KINDS_KEYS_LOCAL_STORAGE } from '@app/constants'
+import { useLocalStorage } from '@app/hooks/useLocalStorage'
 
 import styles from './CartItem.module.css'
 
 const CartItem = ({ book }: { book: Book }) => {
     const { cart, setCart } = useBook()
+    const { changeLocalStorage } = useLocalStorage()
+
+    const filterCart = cart.filter((item) => item.title !== book.title)
 
     const quantityBooks = cart.map(
         (element) => element.title === book.title && element.count,
@@ -24,16 +29,27 @@ const CartItem = ({ book }: { book: Book }) => {
             : element,
     )
 
-    console.log('РЕНДЕР')
+    const incrementQuantity = () => {
+        setCart(() => incrementCount)
+        return changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, incrementCount)
+    }
 
-    const incrementQuantity = () => setCart(() => incrementCount)
-
-    const decrementQuantity = () =>
-        !quantityBooks
-            ? setCart(() => decrementCount)
-            : setCart((prevState) =>
-                  prevState.filter((item) => item.title !== book.title),
-              )
+    const decrementQuantity = () => {
+        if (!book.count) {
+            setCart(() => {
+                changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, filterCart)
+                return filterCart
+            })
+        } else {
+            setCart(() => {
+                changeLocalStorage(
+                    KINDS_KEYS_LOCAL_STORAGE.CART,
+                    decrementCount,
+                )
+                return decrementCount
+            })
+        }
+    }
 
     return (
         <li className={styles.cartItem}>

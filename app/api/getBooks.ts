@@ -3,12 +3,12 @@ import { Dispatch, SetStateAction } from 'react'
 import { URL_SERVER } from '@app/constants/index'
 import { Book, BookFromServer } from '@app/types'
 
-export const getBooks = (setBook: Dispatch<SetStateAction<Book[]>>) => {
+export const getBooks = (setBooks: Dispatch<SetStateAction<Book[]>>) => {
     const dataFromServer = fetch(URL_SERVER).then((result) => result.json())
 
     const content = dataFromServer
         .then((result: { items: BookFromServer[] }) => {
-            const books = result.items.map((item: BookFromServer) => {
+            const books = result?.items.map((item: BookFromServer) => {
                 return {
                     id: item.id,
                     title: item.volumeInfo.title,
@@ -20,11 +20,10 @@ export const getBooks = (setBook: Dispatch<SetStateAction<Book[]>>) => {
                     count: 0,
                 }
             })
-            setBook(books)
+            setBooks(books)
         })
         .catch((error: string) => {
             console.error(error)
         })
-
     return content
 }
