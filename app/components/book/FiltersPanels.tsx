@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 
 import { useBook } from '@app/hooks/useBook'
@@ -45,10 +46,10 @@ const FiltersPanel = () => {
             value === 'Without filter'
                 ? booksFromLocalStorage
                 : booksFromLocalStorage.filter((item) => {
-                        return property === 'publishedDate'
-                            ? item[property].includes(value)
-                            : item[property] === value
-                    }),
+                      return property === 'publishedDate'
+                          ? item[property].includes(value)
+                          : item[property] === value
+                  }),
         )
         setSelectedOptions({
             ...INITIAL_OPTIONS_FILTERS,
