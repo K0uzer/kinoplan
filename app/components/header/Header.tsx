@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useMemo } from 'react'
+import React from 'react'
 
-import Popover from '@app/components/header/Popover'
+import Popover from '@components/header/Popover'
 import logoImage from '@public/logo.jpg'
 import plugForImage from '@public/plug.png'
 

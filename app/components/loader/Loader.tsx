@@ -1,7 +1,8 @@
 import React from 'react'
 
-import styles from './Loader.module.css'
 import RoadLoad from '@app/UI/RoadLoad'
+
+import styles from './Loader.module.css'
 
 const Loader = () => {
     return (
