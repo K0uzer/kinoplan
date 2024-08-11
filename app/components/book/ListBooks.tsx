@@ -18,30 +18,33 @@ const ListBooks = () => {
     )
 
     const reloadPage = () => window.location.reload()
-    return (
-        <>
-            {isResultOfFetch ? (
-                <ul
-                    className={
-                        positionContent === 'table'
-                            ? styles.listTable
-                            : styles.listLines
-                    }
-                >
-                    {books.map((book) => (
-                        <ItemBook
-                            key={book.id}
-                            view={positionContent}
-                            book={book}
-                        />
-                    ))}
-                </ul>
-            ) : (
+
+    if (!isResultOfFetch) {
+        return (
+            <div className={styles.containerError}>
+                <p>
+                    Уважаемый пользователь, произошел сбой. Перезагрузите
+                    страницу
+                </p>
                 <Button onClick={reloadPage} styles={styles.button}>
                     Перезагрузить страницу
                 </Button>
-            )}
-        </>
+            </div>
+        )
+    }
+
+    return (
+        <ul
+            className={
+                positionContent === 'table'
+                    ? styles.listTable
+                    : styles.listLines
+            }
+        >
+            {books.map((book) => (
+                <ItemBook key={book.id} view={positionContent} book={book} />
+            ))}
+        </ul>
     )
 }
 

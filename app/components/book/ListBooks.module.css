@@ -8,3 +8,28 @@
     flex-direction: column;
     padding: 0;
 }
+
+.button {
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--button-add-background-color);
+    transition: 0.3s ease-out;
+    cursor: pointer;
+
+    &:hover {
+        color: white;
+        background-color: var(--button-add-background-color--hover);
+        transition: 0.3s ease-out;
+    }
+}
+
+.containerError {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}

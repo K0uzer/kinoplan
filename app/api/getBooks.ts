@@ -10,14 +10,14 @@ export const getBooks = (
     const dataFromServer = fetch(URL_SERVER)
         .then((result) => {
             setIsLoading(true)
+            if (!result.ok) {
+                setIsLoading(false)
+                throw new Error(`HTTP error! status: ${result.status}`)
+            }
             localStorage.setItem(
                 KINDS_KEYS_LOCAL_STORAGE.RESULT_FETCH,
                 JSON.stringify(result.ok),
             )
-
-            if (!result.ok) {
-                throw new Error(`HTTP error! status: ${result.status}`)
-            }
 
             return result.json()
         })
