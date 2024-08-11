@@ -6,6 +6,7 @@ import { Book } from '@app/types'
 import {
     INITIAL_OPTIONS_FILTERS,
     KIND_FILTER_PROPERTIES,
+    KINDS_KEYS_LOCAL_STORAGE,
     TITLE_SELECTS_OF_FILTER,
 } from '@app/constants'
 
@@ -15,30 +16,35 @@ interface FilterProperties {
     [key: string]: keyof Book
 }
 
-const booksFromLocalStorage: Book[] =
-    localStorage.getItem('books') !== null
-        ? JSON.parse(localStorage.getItem('books') as string)
-        : []
-
-const filteredArrays = {
-    authors: [...new Set(booksFromLocalStorage.map((item) => item.author))],
-    categories: [
-        ...new Set(booksFromLocalStorage.map((item) => item.category)),
-    ],
-    publishedDates: [
-        ...new Set(
-            booksFromLocalStorage.map((item) => item.publishedDate.slice(0, 4)),
-        ),
-    ].sort(),
-}
-
-const { authors, categories, publishedDates } = filteredArrays
-
 const FiltersPanel = () => {
     const { setBooks } = useBook()
     const [selectedOptions, setSelectedOptions] = useState(
         INITIAL_OPTIONS_FILTERS,
     )
+
+    const booksFromLocalStorage: Book[] = localStorage.getItem(
+        KINDS_KEYS_LOCAL_STORAGE.BOOKS,
+    )
+        ? JSON.parse(
+              localStorage.getItem(KINDS_KEYS_LOCAL_STORAGE.BOOKS) as string,
+          )
+        : []
+
+    const filteredArrays = {
+        authors: [...new Set(booksFromLocalStorage.map((item) => item.author))],
+        categories: [
+            ...new Set(booksFromLocalStorage.map((item) => item.category)),
+        ],
+        publishedDates: [
+            ...new Set(
+                booksFromLocalStorage.map((item) =>
+                    item.publishedDate.slice(0, 4),
+                ),
+            ),
+        ].sort(),
+    }
+
+    const { authors, categories, publishedDates } = filteredArrays
 
     const changeContent = (value: string, name: string) => {
         const property = (KIND_FILTER_PROPERTIES as FilterProperties)[name]

@@ -1,7 +1,3 @@
-:root {
-    --select-background-color-hover: #20439bd9;
-}
-
 .select {
     display: flex;
     align-items: center;

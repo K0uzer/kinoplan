@@ -7,6 +7,8 @@ import BookContextProvider from '@context/book'
 
 const inter = Inter({ subsets: ['latin'] })
 
+import './globals.css'
+
 export const metadata: Metadata = {
     title: 'Книжный план',
     description: 'Приложение для продажи книг',

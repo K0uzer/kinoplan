@@ -2,8 +2,8 @@ const URL_SERVER = 'https://www.googleapis.com/books/v1/volumes?q=all'
 const INITIAL_POSITION: 'table' | 'lines' = 'table'
 
 const PATH = {
-    main: '/',
-    cart: '/cart',
+    MAIN: '/',
+    CART: '/cart',
 }
 
 enum KIND_OF_BOOKS_FILTER {
@@ -33,6 +33,7 @@ const KIND_FILTER_PROPERTIES = {
 enum KINDS_KEYS_LOCAL_STORAGE {
     BOOKS = 'books',
     CART = 'cart',
+    RESULT_FETCH = 'resultFetch',
 }
 
 export {

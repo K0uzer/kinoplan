@@ -35,7 +35,7 @@ const CartItem = ({ book }: { book: Book }) => {
     }
 
     const decrementQuantity = () => {
-        if (!book.count) {
+        if (book.count === 1) {
             setCart(() => {
                 changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, filterCart)
                 return filterCart

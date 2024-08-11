@@ -1,9 +1,3 @@
-:root {
-    --cart-item-border: rgb(37, 75, 200);
-    --button-background-color: #31ef646f;
-    --button-background-color--hover: #7aef31b3;
-}
-
 .cartItem {
     font-family: 'Times New Roman', Times, serif;
     display: flex;
@@ -36,7 +30,7 @@
     cursor: pointer;
 
     &:hover {
-        background-color: var(--button-background-color--hover);
+        background-color: var(--button-background-color-hover);
         transition: 0.3s ease-out;
     }
 }

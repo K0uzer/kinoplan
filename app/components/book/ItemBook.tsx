@@ -18,7 +18,7 @@ const ItemBook: React.FC<ItemBookProps> = ({ book, view }) => {
     const { cart, setCart } = useBook()
     const { changeLocalStorage } = useLocalStorage()
 
-    const filteredArrayCartOnUniqueBook = cart.filter(
+    const lengthCart = cart.filter(
         (element) => element.title === book.title,
     ).length
 
@@ -60,7 +60,7 @@ const ItemBook: React.FC<ItemBookProps> = ({ book, view }) => {
             </span>
             <span className={styles.category}>Категория:{book?.category}</span>
 
-            {!filteredArrayCartOnUniqueBook ? (
+            {!lengthCart ? (
                 <button onClick={addBooks} className={styles.buttonAdd}>
                     Добавить в корзину
                 </button>

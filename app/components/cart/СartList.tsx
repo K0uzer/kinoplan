@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect } from 'react'
 
 import { useBook } from '@app/hooks/useBook'
@@ -22,11 +23,14 @@ const CartList = () => {
             {!cart.length ? (
                 <p>Корзина пуста :c</p>
             ) : (
-                <ul>
-                    {cart.map((book) => (
-                        <CartItem key={book.id} book={book} />
-                    ))}
-                </ul>
+                <>
+                    <p>Ваши покупки:</p>
+                    <ul>
+                        {cart.map((book) => (
+                            <CartItem key={book.id} book={book} />
+                        ))}
+                    </ul>
+                </>
             )}
         </>
     )

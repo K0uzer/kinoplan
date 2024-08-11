@@ -1,8 +1,3 @@
-:root {
-    --preview-color-gradient-left-bottom: #5ad1e6;
-    --preview-color-gradient-rigth-top: #162b74;
-}
-
 .header {
     display: flex;
     justify-content: space-around;
@@ -16,7 +11,7 @@
     background-image: linear-gradient(
         to bottom left,
         var(--preview-color-gradient-left-bottom),
-        var(--preview-color-gradient-rigth-top)
+        var(--preview-color-gradient-right-top)
     );
     -webkit-background-clip: text;
 }

@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import Link from 'next/link'
 import { Popover } from 'antd'
 
 import CartList from '@app/components/cart/СartList'
@@ -11,8 +10,10 @@ import { useLocalStorage } from '@app/hooks/useLocalStorage'
 import styles from './Popover.module.css'
 
 const Content = () => {
-    const { setCart } = useBook()
+    const { cart, setCart } = useBook()
     const { changeLocalStorage } = useLocalStorage()
+
+    const changePath = (path: string) => (window.location.href = path)
 
     const clearCart = () => {
         setCart([])
@@ -22,27 +23,47 @@ const Content = () => {
     return (
         <div className={styles.cart}>
             <CartList />
-            <div className={styles.buttonCartContainer}>
-                <Link href={PATH.cart}>
-                    <button className={styles.buttonCart}>Купить</button>
-                </Link>
-                <button onClick={clearCart} className={styles.buttonCart}>
-                    Отчистить
-                </button>
-            </div>
+            {!!cart.length && (
+                <div className={styles.buttonCartContainer}>
+                    <button
+                        onClick={() => changePath(PATH.CART)}
+                        className={styles.buttonCart}
+                    >
+                        Купить
+                    </button>
+                    <button onClick={clearCart} className={styles.buttonCart}>
+                        Отчистить
+                    </button>
+                </div>
+            )}
         </div>
     )
 }
 
 const Cart = () => {
+    const { cart } = useBook()
+
+    const quantityBooksInCart = cart.reduce((curr, exp) => curr + exp.count, 0)
+    const isMainPage = location.href === `http://localhost:3000${PATH.MAIN}`
+
     return (
-        <Popover content={Content} title="Выбранные товары:">
-            <button className={styles.buttonPopover}>Корзина</button>
-        </Popover>
+        <>
+            {isMainPage && (
+                <Popover
+                    className={styles.popover}
+                    content={Content}
+                    title="Выбранные товары:"
+                >
+                    <button className={styles.buttonPopover}>Корзина</button>
+                    {!!cart.length && (
+                        <span className={styles.countButton}>
+                            {quantityBooksInCart}
+                        </span>
+                    )}
+                </Popover>
+            )}
+        </>
     )
 }
 
 export default Cart
-function clearLocalStorageOfCart() {
-    throw new Error('Function not implemented.')
-}

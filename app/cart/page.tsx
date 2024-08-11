@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import Link from 'next/link'
 import { message } from 'antd'
 
 import CartList from '@app/components/cart/СartList'
@@ -11,10 +10,12 @@ import { useLocalStorage } from '@app/hooks/useLocalStorage'
 import styles from './page.module.css'
 
 const CartPage = () => {
-    const { setCart } = useBook()
+    const { cart, setCart } = useBook()
 
     const [messageApi, contextHolder] = message.useMessage()
     const { changeLocalStorage } = useLocalStorage()
+
+    const changePage = (path: string) => (window.location.href = path)
 
     const getMessageAboutPurchase = () => {
         messageApi.open({
@@ -27,7 +28,7 @@ const CartPage = () => {
         changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, [])
 
         setTimeout(() => {
-            window.location.href = PATH.main
+            window.location.href = PATH.MAIN
         }, 3000)
     }
 
@@ -35,17 +36,22 @@ const CartPage = () => {
         <div className={styles.cartWrapper}>
             {contextHolder}
             <CartList />
-            <div className={styles.buttonWrapper}>
-                <Link href={PATH.main}>
-                    <button className={styles.button}>Вернуться назад</button>
-                </Link>
-                <button
-                    onClick={getMessageAboutPurchase}
-                    className={styles.button}
-                >
-                    Оплатить
-                </button>
-            </div>
+            {!!cart.length && (
+                <div className={styles.buttonWrapper}>
+                    <button
+                        onClick={() => changePage(PATH.MAIN)}
+                        className={styles.button}
+                    >
+                        Вернуться на главную
+                    </button>
+                    <button
+                        onClick={getMessageAboutPurchase}
+                        className={styles.button}
+                    >
+                        Оплатить
+                    </button>
+                </div>
+            )}
         </div>
     )
 }

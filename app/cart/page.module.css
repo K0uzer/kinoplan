@@ -1,8 +1,3 @@
-:root {
-    --background-color: #6495eda3;
-    --background-color-hover: #6494ed;
-}
-
 .cartWrapper {
     display: flex;
     flex-direction: column;
