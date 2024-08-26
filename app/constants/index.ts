@@ -3,7 +3,10 @@ const INITIAL_POSITION: 'table' | 'lines' = 'table'
 
 const PATH = {
     MAIN: '/',
-    CART: '/cart',
+    CART: '/pages/cart',
+    AUTH: '/pages/auth',
+    REGISTRATION: '/pages/registration',
+    BOOK: '/pages/card',
 }
 
 enum KIND_OF_BOOKS_FILTER {
