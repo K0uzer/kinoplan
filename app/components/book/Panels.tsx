@@ -1,21 +1,9 @@
-import React from 'react'
-
-import SortPanel from './SortPanel'
-import FiltersPanel from './FiltersPanels'
-import PositioningPanel from './PositioningPanel'
+import React, { ReactNode } from 'react'
 
 import styles from './Panel.module.css'
 
-const Panels = () => {
-    return (
-        <section className={styles.section}>
-            <SortPanel />
-            <div className={styles.containerSortPanel}>
-                <FiltersPanel />
-                <PositioningPanel />
-            </div>
-        </section>
-    )
+const Panels = ({ children }: { children: ReactNode }) => {
+    return <section className={styles.section}>{children}</section>
 }
 
 export default Panels

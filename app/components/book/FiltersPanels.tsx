@@ -75,7 +75,7 @@ const FiltersPanel = () => {
     }
 
     return (
-        <div>
+        <>
             {TITLE_SELECTS_OF_FILTER.map((select) => (
                 <select
                     key={select}
@@ -103,7 +103,7 @@ const FiltersPanel = () => {
                     ))}
                 </select>
             ))}
-        </div>
+        </>
     )
 }
 

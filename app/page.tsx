@@ -6,6 +6,8 @@ import ListBooks from '@components/book/ListBooks'
 import { useBook } from '@hooks/useBook'
 import Panels from '@components/book/Panels'
 import { getBooks } from './api/getBooks'
+import DropDown from '@components/book/DropDown'
+import PositioningPanel from './components/book/PositioningPanel'
 
 const HomePage = () => {
     const { isLoading } = useBook()
@@ -21,7 +23,10 @@ const HomePage = () => {
                 <Loader />
             ) : (
                 <>
-                    <Panels />
+                    <Panels>
+                        <DropDown />
+                        <PositioningPanel />
+                    </Panels>
                     <ListBooks />
                 </>
             )}

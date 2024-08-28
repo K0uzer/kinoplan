@@ -1,4 +1,5 @@
 import React from 'react'
+import { CaretUpOutlined } from '@ant-design/icons'
 
 import { useBook } from '@app/hooks/useBook'
 import { Book } from '@app/types'
@@ -19,25 +20,17 @@ const SortPanel = () => {
         const sorty = sortByProperties[key]
         setBooks((prevState) =>
             prevState.toSorted((curr, ext) =>
-                curr[sorty].localeCompare(ext[sorty]),
+                curr[sorty].toString().localeCompare(ext[sorty].toString()),
             ),
         )
     }
 
-    return (
-        <fieldset
-            onChange={(event) => getSortedBooks(event)}
-            className={styles.fieldset}
-        >
-            <legend>Сортировка</legend>
-            {Object.keys(sortByProperties).map((item, index) => (
-                <div className={styles.blockRadio} key={index}>
-                    <input type="radio" id={item} name="drone" value={item} />
-                    <label htmlFor={item}>{item}</label>
-                </div>
-            ))}
-        </fieldset>
-    )
+    return Object.keys(sortByProperties).map((item, index) => (
+        <div className={styles.blockSorting} key={index}>
+            <CaretUpOutlined />
+            <p>{item}</p>
+        </div>
+    ))
 }
 
 export default SortPanel
