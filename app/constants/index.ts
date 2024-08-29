@@ -39,6 +39,21 @@ enum KINDS_KEYS_LOCAL_STORAGE {
     RESULT_FETCH = 'resultFetch',
 }
 
+const INITIAL_STATE_OF_SORT = {
+    Автор: {
+        state: false,
+        count: 0,
+    },
+    Жанр: {
+        state: false,
+        count: 0,
+    },
+    Год: {
+        state: false,
+        count: 0,
+    },
+}
+
 export {
     URL_SERVER,
     INITIAL_POSITION,
@@ -48,4 +63,5 @@ export {
     TITLE_SELECTS_OF_FILTER,
     KIND_FILTER_PROPERTIES,
     KINDS_KEYS_LOCAL_STORAGE,
+    INITIAL_STATE_OF_SORT,
 }
