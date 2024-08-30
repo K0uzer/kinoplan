@@ -6,6 +6,8 @@ import { Dropdown, Space, DropdownProps, MenuProps } from 'antd'
 import FiltersPanel from './FiltersPanels'
 import SortPanel from './SortPanel'
 
+import styles from './DropDown.module.css'
+
 const App: React.FC = () => {
     const [open, setOpen] = useState(false)
 
@@ -49,7 +51,9 @@ const App: React.FC = () => {
         >
             <a onClick={(event) => event.preventDefault()}>
                 <Space>
-                    <MenuFoldOutlined style={{ fontSize: 50, margin: 20 }} />
+                    <MenuFoldOutlined
+                        className={styles.icon}
+                    />
                 </Space>
             </a>
         </Dropdown>

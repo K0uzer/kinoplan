@@ -1,6 +1,7 @@
 .listTable {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding: 0;
 }
 
 .listLines {
@@ -37,20 +38,18 @@
 @media (max-width: 575px) {
     .listTable {
         grid-template-columns: 1fr;
-        padding: 0;
     }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
     .listTable {
         grid-template-columns: 1fr;
-        padding: 0;
     }
 }
 
 @media (min-width: 1200px) {
     .listTable {
+        grid-template-columns: 1fr 1fr 1fr;
         margin: 0 3rem 0 3rem;
-        padding: 0;
     }
 }

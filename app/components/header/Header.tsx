@@ -18,7 +18,7 @@ const Header = () => {
                 loading="lazy"
                 className={styles.imageOfPreview}
             />
-            <span className={styles.preview}>Пришло время читать🐱‍👤</span>
+            <span className={styles.preview}>Пришло время читать🐱</span>
             <Popover />
         </header>
     )
