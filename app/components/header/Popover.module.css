@@ -3,17 +3,19 @@
 }
 
 .cart {
-    width: 40vw;
+    width: auto;
+    overflow-y: scroll;
+    height: 350px;
 }
 
 .buttonCartContainer {
-    display: block;
+    display: flex;
+    justify-content: center;
 }
 
 .buttonCart {
     width: 200px;
     height: 25px;
-    margin: 20px 0 0 20px;
     border: none;
     border-radius: 6px;
     background-color: var(--button-cart-background-color);
@@ -55,11 +57,26 @@
         width: 100px;
         height: 40px;
     }
+    .countButton {
+        left: 5rem;
+        padding: 10px;
+    }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
     .buttonPopover {
         width: 200px;
         height: 50px;
+    }
+    .countButton {
+        left: 10rem;
+        padding: 14px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .countButton {
+        left: 10rem;
+        padding: 14px;
     }
 }
