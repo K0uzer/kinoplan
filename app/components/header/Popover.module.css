@@ -5,7 +5,7 @@
 .cart {
     width: auto;
     overflow-y: scroll;
-    height: 350px;
+    max-height: 350px;
 }
 
 .buttonCartContainer {
@@ -16,6 +16,7 @@
 .buttonCart {
     width: 200px;
     height: 25px;
+    margin: 0 5px;
     border: none;
     border-radius: 6px;
     background-color: var(--button-cart-background-color);
@@ -72,6 +73,9 @@
         left: 10rem;
         padding: 14px;
     }
+}
+
+@media (min-width: 768) and (max-width: 1199px) {
 }
 
 @media (min-width: 1200px) {
