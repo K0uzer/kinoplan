@@ -8,6 +8,10 @@
     max-height: 350px;
 }
 
+.cart::-webkit-scrollbar {
+    width: 0;
+}
+
 .buttonCartContainer {
     display: flex;
     justify-content: center;

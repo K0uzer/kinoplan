@@ -4,9 +4,9 @@ const INITIAL_POSITION: 'table' | 'lines' = 'table'
 const PATH = {
     MAIN: '/',
     CART: '/pages/cart',
-    AUTH: '/pages/auth',
-    REGISTRATION: '/pages/registration',
-    BOOK: '/pages/card',
+    AUTH: '/pages/sign-in',
+    REGISTRATION: '/pages/logout',
+    PERSONAL_ACCOUNT: '/personal-account',
 }
 
 enum KIND_OF_BOOKS_FILTER {
@@ -40,15 +40,15 @@ enum KINDS_KEYS_LOCAL_STORAGE {
 }
 
 const INITIAL_STATE_OF_SORT = {
-    Автор: {
+    author: {
         state: false,
         count: 0,
     },
-    Жанр: {
+    genre: {
         state: false,
         count: 0,
     },
-    Год: {
+    year: {
         state: false,
         count: 0,
     },
