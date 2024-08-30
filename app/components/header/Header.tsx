@@ -10,19 +10,18 @@ import plugForImage from '@public/plug.png'
 import styles from './Header.module.css'
 
 const Header = () => {
-        return (
-            <header className={styles.header}>
-                <Image
-                    src={logoImage ?? plugForImage}
-                    alt="Книжный план"
-                    width={150}
-                    height={100}
-                    loading="lazy"
-                />
-                <span className={styles.preview}>Пришло время читать🐱‍👤</span>
-                <Popover />
-            </header>
-        )
-    }
+    return (
+        <header className={styles.header}>
+            <Image
+                src={logoImage ?? plugForImage}
+                alt="Книжный план"
+                loading="lazy"
+                className={styles.imageOfPreview}
+            />
+            <span className={styles.preview}>Пришло время читать🐱‍👤</span>
+            <Popover />
+        </header>
+    )
+}
 
 export default Header

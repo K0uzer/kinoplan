@@ -29,7 +29,6 @@
 .buttonPopover {
     width: 200px;
     height: 50px;
-    margin-top: 20px;
     border: none;
     border-radius: 6px;
     color: white;
@@ -49,4 +48,18 @@
     padding: 10px;
     background-color: aquamarine;
     border-radius: 50%;
+}
+
+@media (max-width: 575px) {
+    .buttonPopover {
+        width: 100px;
+        height: 40px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .buttonPopover {
+        width: 200px;
+        height: 50px;
+    }
 }

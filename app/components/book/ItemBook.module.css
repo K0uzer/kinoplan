@@ -22,7 +22,6 @@
 }
 
 .listItemForLine {
-    flex-direction: row;
 }
 
 .titleBook {
@@ -74,5 +73,23 @@
     &:hover {
         background-color: var(--button-counter-background-color--hover);
         transition: 0.3s ease-out;
+    }
+}
+
+@media (max-width: 575px) {
+    .preview {
+        font-size: 20px;
+    }
+    .imageOfPreview {
+        display: none;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .preview {
+        font-size: 25px;
+    }
+    .imageOfPreview {
+        display: none;
     }
 }

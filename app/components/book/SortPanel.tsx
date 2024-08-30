@@ -4,12 +4,14 @@ import { CaretUpOutlined } from '@ant-design/icons'
 
 import { useBook } from '@app/hooks/useBook'
 import { INITIAL_STATE_OF_SORT } from '@app/constants'
+import { useLocalStorage } from '@app/hooks/useLocalStorage'
 
 import styles from './SortPanel.module.css'
 
 const SortPanel = () => {
     const { setBooks } = useBook()
     const [stateSort, setStateSort] = useState(INITIAL_STATE_OF_SORT)
+    const { getLocalStorage } = useLocalStorage()
 
     const getSortedBooks = (item: string) => {
         setStateSort((prevSortState) => {
@@ -26,6 +28,7 @@ const SortPanel = () => {
             })
             return newSortState
         })
+
         setBooks((prevBooksState) => {
             const newBookState = [...prevBooksState]
             console.log(stateSort[item])
@@ -45,7 +48,7 @@ const SortPanel = () => {
                         ),
                 )
             } else {
-                return JSON.parse(localStorage.getItem('books') as string)
+                return getLocalStorage('books')
             }
         })
     }
@@ -60,19 +63,12 @@ const SortPanel = () => {
         >
             {stateSort[item].state && (
                 <CaretUpOutlined
-                    style={
-                        stateSort[item].count < 2
-                            ? {
-                                  marginRight: 10,
-                                  rotate: '180deg',
-                                  transition: '0.3s',
-                              }
-                            : {
-                                  marginRight: 10,
-                                  rotate: '0deg',
-                                  transition: '0.3s',
-                              }
-                    }
+                    style={{
+                        marginRight: 10,
+                        rotate:
+                            stateSort[item].count % 2 === 0 ? '180deg' : '0deg',
+                        transition: '0.3s',
+                    }}
                 />
             )}
             <p>{item}</p>
