@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 
 import Loader from '@components/loader/Loader'
 import ListBooks from '@components/book/ListBooks'
@@ -13,7 +13,7 @@ const HomePage = () => {
     const { isLoading } = useBook()
     const { setBooks, setIsLoading } = useBook()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         getBooks(setBooks, setIsLoading)
     }, [setBooks, setIsLoading])
 

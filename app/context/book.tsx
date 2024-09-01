@@ -21,7 +21,7 @@ export type ContextBookType = {
     isLoading: boolean
     setIsLoading: Dispatch<SetStateAction<boolean>>
     positionContent: 'table' | 'lines'
-    setPositionContent: Dispatch<SetStateAction<'table' | 'lines'>> // Update type here
+    setPositionContent: Dispatch<SetStateAction<'table' | 'lines'>>
 }
 
 export const BookContext = createContext<ContextBookType>({

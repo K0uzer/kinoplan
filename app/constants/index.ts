@@ -42,15 +42,15 @@ enum KINDS_KEYS_LOCAL_STORAGE {
 const INITIAL_STATE_OF_SORT = {
     author: {
         state: false,
-        count: 0,
+        direction: 'asc',
     },
     genre: {
         state: false,
-        count: 0,
+        direction: 'asc',
     },
     year: {
         state: false,
-        count: 0,
+        direction: 'asc',
     },
 }
 
