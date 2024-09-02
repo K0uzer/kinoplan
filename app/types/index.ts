@@ -20,3 +20,8 @@ export type Book = {
     category: string
     count: number
 }
+
+export type TSortState = {
+    state: boolean
+    direction: 'asc' | 'desk'
+}

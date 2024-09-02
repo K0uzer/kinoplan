@@ -1,4 +1,5 @@
 const URL_SERVER = 'https://www.googleapis.com/books/v1/volumes?q=all'
+
 const INITIAL_POSITION: 'table' | 'lines' = 'table'
 
 const PATH = {
@@ -42,15 +43,15 @@ enum KINDS_KEYS_LOCAL_STORAGE {
 const INITIAL_STATE_OF_SORT = {
     author: {
         state: false,
-        direction: 'asc',
+        direction: 'desk',
     },
-    genre: {
+    category: {
         state: false,
-        direction: 'asc',
+        direction: 'desk',
     },
-    year: {
+    publishedDate: {
         state: false,
-        direction: 'asc',
+        direction: 'desk',
     },
 }
 

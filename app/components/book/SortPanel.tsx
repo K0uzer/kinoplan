@@ -2,40 +2,67 @@
 import React, { useState } from 'react'
 import { CaretUpOutlined } from '@ant-design/icons'
 
+import { Book, TSortState } from '@app/types'
 import { useBook } from '@app/hooks/useBook'
 import { INITIAL_STATE_OF_SORT } from '@app/constants'
-import { useLocalStorage } from '@app/hooks/useLocalStorage'
 
 import styles from './SortPanel.module.css'
 
+const sortingFunctions = {
+    author: (curr: Book, exp: Book) => curr.author.localeCompare(exp.author),
+    category: (curr: Book, exp: Book) =>
+        curr.category.localeCompare(exp.category),
+    publishedDate: (curr: Book, exp: Book) =>
+        curr.publishedDate.localeCompare(exp.publishedDate),
+}
+
+const TITLES_BUTTONS = {
+    author: 'Авторы',
+    category: 'Категории',
+    publishedDate: 'Дата публикации',
+}
+
 const SortPanel = () => {
-    const [sortState, setSortState] = useState(INITIAL_STATE_OF_SORT)
-    const { setBooks } = useBook()
-    const { getLocalStorage } = useLocalStorage()
+    const [sortState, setSortState] = useState<{ [key: string]: TSortState[] }>(
+        INITIAL_STATE_OF_SORT,
+    )
+    const { books, setBooks } = useBook()
 
-    const getSortedBooks = (item: string) => {}
+    const sortBooks = (key: string) => {
+        const { state, direction } = sortState[key]
 
-    return Object.keys(INITIAL_STATE_OF_SORT).map((item, index) => (
+        const sortedBooks = [...books].sort(sortingFunctions[key])
+
+        const changedSortingState = {
+            state: direction === 'asc' ? false : true,
+            direction: direction === 'asc' && state ? 'desk' : 'asc',
+        }
+
+        setBooks(sortedBooks[direction === 'asc' ? 'reverse' : 'slice']())
+        setSortState({ ...INITIAL_STATE_OF_SORT, [key]: changedSortingState })
+    }
+
+    return Object.keys(INITIAL_STATE_OF_SORT).map((key, index) => (
         <div
-            onClick={() => getSortedBooks(item)}
+            onClick={() => sortBooks(key)}
             className={`${styles.blockSorting} ${
-                sortState[item].direction ? 'blockSortingActive' : ''
+                sortState[key].state ? 'blockSortingActive' : ''
             }`}
             key={index}
         >
-            {sortState[item].state && (
+            {sortState[key].state && (
                 <CaretUpOutlined
                     style={{
                         marginRight: 10,
                         rotate:
-                            sortState[item].direction === 'asc'
+                            sortState[key].direction === 'asc'
                                 ? '180deg'
                                 : '0deg',
                         transition: '0.3s',
                     }}
                 />
             )}
-            <p>{item}</p>
+            <p>{TITLES_BUTTONS[key]}</p>
         </div>
     ))
 }
