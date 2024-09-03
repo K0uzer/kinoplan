@@ -1,3 +1,5 @@
+import { TITLES_BUTTONS_MAPPER } from "@app/types"
+
 const URL_SERVER = 'https://www.googleapis.com/books/v1/volumes?q=all'
 
 const INITIAL_POSITION: 'table' | 'lines' = 'table'
@@ -53,6 +55,12 @@ const INITIAL_STATE_OF_SORT = {
         state: false,
         direction: 'desk',
     },
+}
+
+export const TITLES_BUTTONS: TITLES_BUTTONS_MAPPER = {
+    author: 'Авторы',
+    category: 'Категории',
+    publishedDate: 'Дата публикации',
 }
 
 export {

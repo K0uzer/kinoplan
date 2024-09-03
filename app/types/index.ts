@@ -1,3 +1,5 @@
+import { TITLES_BUTTONS } from "@app/components/book/SortPanel"
+
 export type BookFromServer = {
     id: number
     volumeInfo: {
@@ -24,4 +26,10 @@ export type Book = {
 export type TSortState = {
     state: boolean
     direction: 'asc' | 'desk'
+}
+
+export type TITLES_BUTTONS_KEY = keyof typeof TITLES_BUTTONS
+
+export type TITLES_BUTTONS_MAPPER = {
+    [P in TITLES_BUTTONS_KEY]: string
 }

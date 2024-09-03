@@ -2,7 +2,12 @@
 import React, { useState } from 'react'
 import { CaretUpOutlined } from '@ant-design/icons'
 
-import { Book, TSortState } from '@app/types'
+import {
+    Book,
+    TITLES_BUTTONS_KEY,
+    TITLES_BUTTONS_MAPPER,
+    TSortState,
+} from '@app/types'
 import { useBook } from '@app/hooks/useBook'
 import { INITIAL_STATE_OF_SORT } from '@app/constants'
 
@@ -16,19 +21,13 @@ const sortingFunctions = {
         curr.publishedDate.localeCompare(exp.publishedDate),
 }
 
-const TITLES_BUTTONS = {
-    author: 'Авторы',
-    category: 'Категории',
-    publishedDate: 'Дата публикации',
-}
-
 const SortPanel = () => {
-    const [sortState, setSortState] = useState<{ [key: string]: TSortState[] }>(
-        INITIAL_STATE_OF_SORT,
-    )
+    const [sortState, setSortState] = useState<{
+        [key: TITLES_BUTTONS_KEY]: TSortState[]
+    }>(INITIAL_STATE_OF_SORT)
     const { books, setBooks } = useBook()
 
-    const sortBooks = (key: string) => {
+    const sortBooks = (key: TITLES_BUTTONS_KEY) => {
         const { state, direction } = sortState[key]
 
         const sortedBooks = [...books].sort(sortingFunctions[key])
@@ -42,29 +41,31 @@ const SortPanel = () => {
         setSortState({ ...INITIAL_STATE_OF_SORT, [key]: changedSortingState })
     }
 
-    return Object.keys(INITIAL_STATE_OF_SORT).map((key, index) => (
-        <div
-            onClick={() => sortBooks(key)}
-            className={`${styles.blockSorting} ${
-                sortState[key].state ? 'blockSortingActive' : ''
-            }`}
-            key={index}
-        >
-            {sortState[key].state && (
-                <CaretUpOutlined
-                    style={{
-                        marginRight: 10,
-                        rotate:
-                            sortState[key].direction === 'asc'
-                                ? '180deg'
-                                : '0deg',
-                        transition: '0.3s',
-                    }}
-                />
-            )}
-            <p>{TITLES_BUTTONS[key]}</p>
-        </div>
-    ))
+    return Object.keys(INITIAL_STATE_OF_SORT).map(
+        (key: TITLES_BUTTONS_KEY, index) => (
+            <div
+                onClick={() => sortBooks(key)}
+                className={`${styles.blockSorting} ${
+                    sortState[key].state ? 'blockSortingActive' : ''
+                }`}
+                key={index}
+            >
+                {sortState[key].state && (
+                    <CaretUpOutlined
+                        style={{
+                            marginRight: 10,
+                            rotate:
+                                sortState[key].direction === 'asc'
+                                    ? '180deg'
+                                    : '0deg',
+                            transition: '0.3s',
+                        }}
+                    />
+                )}
+                <p>{TITLES_BUTTONS[key as keyof typeof TITLES_BUTTONS]}</p>
+            </div>
+        ),
+    )
 }
 
 export default SortPanel
