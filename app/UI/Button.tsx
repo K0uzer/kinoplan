@@ -4,12 +4,10 @@ const Button = ({
     styles,
     onClick,
     children,
-    type,
 }: {
     styles: string
     onClick: MouseEventHandler<HTMLButtonElement>
     children: ReactNode
-    type?: string
 }) => {
     return (
         <button onClick={onClick} className={styles}>

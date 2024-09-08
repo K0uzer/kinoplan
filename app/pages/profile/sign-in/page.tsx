@@ -8,7 +8,7 @@ import Button from '@app/UI/Button'
 
 import styles from '/page.module.css'
 
-const Auth = () => {
+const SignInPage = () => {
     const {
         register,
         handleSubmit,
@@ -17,6 +17,7 @@ const Auth = () => {
 
     const onSubmit = () => {
         alert('Произведена авторизация')
+        // ИСПРАВИТЬ! ЧЕРЕЗ LINK
         window.location.href = PATH.MAIN
     }
 
@@ -32,4 +33,4 @@ const Auth = () => {
     )
 }
 
-export default Auth
+export default SignInPage

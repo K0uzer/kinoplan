@@ -8,14 +8,13 @@ import { KINDS_KEYS_LOCAL_STORAGE, PATH } from '@app/constants'
 import { useLocalStorage } from '@app/hooks/useLocalStorage'
 
 import styles from './page.module.css'
+import { changePage } from '@app/utils'
 
 const CartPage = () => {
     const { cart, setCart } = useBook()
 
     const [messageApi, contextHolder] = message.useMessage()
     const { changeLocalStorage } = useLocalStorage()
-
-    const changePage = (path: string) => (window.location.href = path)
 
     const getMessageAboutPurchase = () => {
         messageApi.open({
@@ -28,7 +27,7 @@ const CartPage = () => {
         changeLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART, [])
 
         setTimeout(() => {
-            window.location.href = PATH.MAIN
+            changePage(PATH.MAIN)
         }, 3000)
     }
 

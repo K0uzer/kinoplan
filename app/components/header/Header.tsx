@@ -1,25 +1,29 @@
 'use client'
 
-import Image from 'next/image'
 import React from 'react'
+import { UserOutlined } from '@ant-design/icons'
 
 import Popover from '@components/header/Popover'
-import logoImage from '@public/logo.jpg'
-import plugForImage from '@public/plug.png'
+import { PATH } from '@app/constants'
+import Link from 'next/link'
 
 import styles from './Header.module.css'
 
 const Header = () => {
     return (
         <header className={styles.header}>
-            <Image
-                src={logoImage ?? plugForImage}
-                alt="Книжный план"
-                loading="lazy"
-                className={styles.imageOfPreview}
-            />
             <span className={styles.preview}>Пришло время читать🐱</span>
-            <Popover />
+            <div className={styles.containerOfButton}>
+                <Popover />
+                {location.pathname === PATH.MAIN && (
+                    <Link className={styles.link} href={PATH.PROFILE}>
+                        <div className={styles.containerOfAuth}>
+                            <span>Личный кабинет</span>
+                            <UserOutlined />
+                        </div>
+                    </Link>
+                )}
+            </div>
         </header>
     )
 }

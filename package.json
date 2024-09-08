@@ -9,19 +9,25 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@supabase/supabase-js": "^2.45.3",
         "antd": "5.18.1",
         "commitlint": "19.3.0",
+        "easymde": "^2.18.0",
         "eslint": "8.57.0",
         "eslint-config-next": "14.2.3",
         "module-alias": "2.2.3",
         "next": "14.2.4",
+        "next-auth": "^4.24.7",
         "npm": "10.8.1",
         "react": "18.3.1",
         "react-dom": "18.3.1",
         "react-hook-form": "7.53.0",
+        "react-markdown": "^9.0.1",
+        "react-simplemde-editor": "^5.2.0",
         "sonarqube-scanner": "4.0.1",
         "supabase": "^1.191.3",
-        "typescript": "5.4.5"
+        "typescript": "5.4.5",
+        "uuid": "^10.0.0"
     },
     "devDependencies": {
         "@types/node": "20.14.2",

@@ -7,9 +7,9 @@ const INITIAL_POSITION: 'table' | 'lines' = 'table'
 const PATH = {
     MAIN: '/',
     CART: '/pages/cart',
-    AUTH: '/pages/sign-in',
-    REGISTRATION: '/pages/logout',
-    PERSONAL_ACCOUNT: '/personal-account',
+    PROFILE: '/pages/profile',
+    AUTH: '/pages/profile/sign-in',
+    REGISTRATION: '/pages/profile/registration',
 }
 
 enum KIND_OF_BOOKS_FILTER {

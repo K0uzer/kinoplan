@@ -6,6 +6,7 @@ import { useBook } from '@app/hooks/useBook'
 import { useLocalStorage } from '@app/hooks/useLocalStorage'
 import { KINDS_KEYS_LOCAL_STORAGE } from '@app/constants'
 import Button from '@app/UI/Button'
+import { reloadPage } from '@app/utils'
 
 import styles from './ListBooks.module.css'
 
@@ -14,8 +15,6 @@ const ListBooks = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [hasFetchResult, setHasFetchResult] = useState(false)
     const { getLocalStorage } = useLocalStorage()
-
-    const reloadPage = () => window.location.reload()
 
     useEffect(() => {
         const checkLocalStorage = async () => {
