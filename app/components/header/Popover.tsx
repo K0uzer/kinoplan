@@ -44,7 +44,8 @@ const Cart = () => {
     const { cart } = useBook()
 
     const quantityBooksInCart = cart.reduce((curr, exp) => curr + exp.count, 0)
-    const isMainPage = location.href === `http://localhost:3000${PATH.MAIN}`
+    //ПРИ ИСПОЛЬЗОВАНИИ location.pathname === PATH.MAIN МЫ МЕНЯЯ СТРАНИЦУ ПОЛУЧАЕМ СТАРЫЙ HEADER, ОДНАКО НУЖЕН ОБНОВЛЕННЫЙ
+    const isMainPage = location.pathname === PATH.MAIN
 
     return (
         <>
