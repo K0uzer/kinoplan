@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -6,16 +5,22 @@ import Link from 'next/link'
 import { PATH } from '@app/constants'
 import Button from '@app/UI/Button'
 import supabase from './../../../supabase'
+import { headers } from 'next/headers'
 
 import styles from '/page.module.css'
-import { headers } from 'next/headers'
+
+type Inputs = {
+    example: string
+    exampleRequired: string
+}
 
 const SignInPage = () => {
     const {
         register,
         handleSubmit,
+        watch,
         formState: { errors },
-    } = useForm()
+    } = useForm<Inputs>()
 
     const signIn = async () => {
         const origin = headers().get('origin')
@@ -39,15 +44,18 @@ const SignInPage = () => {
                     type="text"
                     placeholder="Введите свой логин"
                     {...register('email')}
+                    required
                 />
                 {errors.login && <div>Ошибка email</div>}
                 <input
                     type="password"
                     placeholder="Введите свой пароль"
                     {...register('password')}
+                    required
                 />
                 {errors.password && <div>Ошибка password</div>}
                 <button type="submit">Войти</button>
+                <Link href="/registration">У меня нет аккаунта</Link>
             </form>
         </main>
     )
