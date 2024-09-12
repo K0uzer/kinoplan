@@ -33,7 +33,6 @@
         "require-atomic-updates": "error",
         "use-isnan": "error",
         "block-scoped-var": "error",
-        "camelcase": "error",
         "capitalized-comments": "error",
         "complexity": ["error", 10],
         "eqeqeq": "error",
@@ -42,7 +41,6 @@
         "guard-for-in": "error",
         "id-denylist": [
             "error",
-            "data",
             "err",
             "e",
             "cb",
