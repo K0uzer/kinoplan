@@ -6,7 +6,7 @@ import CartList from '@app/components/cart/СartList'
 import { useBook } from '@app/hooks/useBook'
 import { KINDS_KEYS_LOCAL_STORAGE, PATH } from '@app/constants'
 import { useLocalStorage } from '@app/hooks/useLocalStorage'
-import { changePage } from '@utils/index'
+import { changePage } from '@app/utils/index'
 
 import styles from './Popover.module.css'
 

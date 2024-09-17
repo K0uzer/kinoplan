@@ -1,6 +1,8 @@
+import React from 'react'
+
 import { login, signup } from './actions'
 
-export default function LoginPage() {
+const page = () => {
     return (
         <form>
             <label htmlFor="email">Email:</label>
@@ -12,3 +14,5 @@ export default function LoginPage() {
         </form>
     )
 }
+
+export default page

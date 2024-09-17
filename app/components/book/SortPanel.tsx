@@ -20,7 +20,7 @@ const SortPanel = () => {
     const [sortState, setSortState] = useState(INITIAL_STATE_OF_SORT)
     const { books, setBooks } = useBook()
 
-    const sortBooks = (key) => {
+    const sortBooks = (key: any) => {
         const { state, direction } = sortState[key as keyof typeof sortState]
 
         const sortedBooks = [...books].sort(
