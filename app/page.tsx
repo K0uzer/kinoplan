@@ -17,6 +17,8 @@ const HomePage = () => {
         getBooks(setBooks, setIsLoading)
     }, [setBooks, setIsLoading])
 
+    console.log(document.cookie)
+
     return (
         <main>
             {isLoading ? (
