@@ -22,8 +22,6 @@ export type ContextBookType = {
     setIsLoading: Dispatch<SetStateAction<boolean>>
     positionContent: 'table' | 'lines'
     setPositionContent: Dispatch<SetStateAction<'table' | 'lines'>>
-    isAuthorized: boolean
-    setIsAuthorized: Dispatch<SetStateAction<boolean>>
 }
 
 export const BookContext = createContext<ContextBookType>({
@@ -35,8 +33,6 @@ export const BookContext = createContext<ContextBookType>({
     setIsLoading: () => {},
     positionContent: 'table',
     setPositionContent: () => {},
-    isAuthorized: false,
-    setIsAuthorized: () => {},
 })
 
 const BookContextProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -44,7 +40,6 @@ const BookContextProvider: FC<PropsWithChildren> = ({ children }) => {
     const [cart, setCart] = useState<Book[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [positionContent, setPositionContent] = useState(INITIAL_POSITION)
-    const [isAuthorized, setIsAuthorized] = useState(false)
     const value: ContextBookType = useMemo(
         () => ({
             books,
@@ -55,8 +50,6 @@ const BookContextProvider: FC<PropsWithChildren> = ({ children }) => {
             setIsLoading,
             positionContent,
             setPositionContent,
-            isAuthorized,
-            setIsAuthorized,
         }),
         [
             books,
@@ -67,8 +60,6 @@ const BookContextProvider: FC<PropsWithChildren> = ({ children }) => {
             setIsLoading,
             positionContent,
             setPositionContent,
-            isAuthorized,
-            setIsAuthorized,
         ],
     )
     return <BookContext.Provider value={value}>{children}</BookContext.Provider>
