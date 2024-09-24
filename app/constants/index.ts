@@ -6,10 +6,10 @@ const INITIAL_POSITION: 'table' | 'lines' = 'table'
 
 const PATH = {
     MAIN: '/',
-    CART: '/pages/cart',
-    PROFILE: '/pages/private',
-    AUTH: '/pages/login',
-    ERROR: '/pages/error',
+    CART: '/cart',
+    PROFILE: '/private',
+    AUTH: '/login',
+    ERROR: '/error',
 }
 
 enum KIND_OF_BOOKS_FILTER {

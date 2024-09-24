@@ -36,11 +36,11 @@ export async function updateSession(request: NextRequest) {
 
     if (
         !user &&
-        !request.nextUrl.pathname.startsWith(PATH.MAIN) &&
-        !request.nextUrl.pathname.startsWith('/auth')
+        !request.nextUrl.pathname.startsWith(PATH.PROFILE) &&
+        !request.nextUrl.pathname.startsWith(PATH.MAIN)
     ) {
         const url = request.nextUrl.clone()
-        url.pathname = PATH.AUTH
+        url.pathname = PATH.PROFILE
         return NextResponse.redirect(url)
     }
 
