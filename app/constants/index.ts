@@ -1,9 +1,15 @@
+import { TITLES_BUTTONS_MAPPER } from '@app/types'
+
 const URL_SERVER = 'https://www.googleapis.com/books/v1/volumes?q=all'
+
 const INITIAL_POSITION: 'table' | 'lines' = 'table'
 
 const PATH = {
     MAIN: '/',
     CART: '/cart',
+    PROFILE: '/private',
+    AUTH: '/login',
+    ERROR: '/error',
 }
 
 enum KIND_OF_BOOKS_FILTER {
@@ -36,6 +42,27 @@ enum KINDS_KEYS_LOCAL_STORAGE {
     RESULT_FETCH = 'resultFetch',
 }
 
+const INITIAL_STATE_OF_SORT = {
+    author: {
+        state: false,
+        direction: 'desk',
+    },
+    category: {
+        state: false,
+        direction: 'desk',
+    },
+    publishedDate: {
+        state: false,
+        direction: 'desk',
+    },
+}
+
+const TITLES_BUTTONS: TITLES_BUTTONS_MAPPER = {
+    author: 'Авторы',
+    category: 'Категории',
+    publishedDate: 'Дата публикации',
+}
+
 export {
     URL_SERVER,
     INITIAL_POSITION,
@@ -45,4 +72,6 @@ export {
     TITLE_SELECTS_OF_FILTER,
     KIND_FILTER_PROPERTIES,
     KINDS_KEYS_LOCAL_STORAGE,
+    INITIAL_STATE_OF_SORT,
+    TITLES_BUTTONS,
 }

@@ -1,43 +1,67 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
+import { CaretUpOutlined } from '@ant-design/icons'
 
+import { Book, TITLES_BUTTONS_KEY } from '@app/types'
 import { useBook } from '@app/hooks/useBook'
-import { Book } from '@app/types'
+import { INITIAL_STATE_OF_SORT, TITLES_BUTTONS } from '@app/constants'
 
 import styles from './SortPanel.module.css'
 
-const sortByProperties: Record<string, keyof Book> = {
-    Автор: 'author',
-    Жанр: 'category',
-    Год: 'publishedDate',
+const sortingFunctions = {
+    author: (curr: Book, exp: Book) => curr.author.localeCompare(exp.author),
+    category: (curr: Book, exp: Book) =>
+        curr.category.localeCompare(exp.category),
+    publishedDate: (curr: Book, exp: Book) =>
+        curr.publishedDate.localeCompare(exp.publishedDate),
 }
 
 const SortPanel = () => {
-    const { setBooks } = useBook()
+    const [sortState, setSortState] = useState(INITIAL_STATE_OF_SORT)
+    const { books, setBooks } = useBook()
 
-    const getSortedBooks = (event: React.FormEvent<HTMLFieldSetElement>) => {
-        const key = (event.target as HTMLInputElement).value
-        const sorty = sortByProperties[key]
-        setBooks((prevState) =>
-            prevState.toSorted((curr, ext) =>
-                curr[sorty].localeCompare(ext[sorty]),
-            ),
+    const sortBooks = (key: any) => {
+        const { state, direction } = sortState[key as keyof typeof sortState]
+
+        const sortedBooks = [...books].sort(
+            sortingFunctions[key as keyof typeof sortState],
         )
+
+        const changedSortingState = {
+            state: direction === 'asc' ? false : true,
+            direction: direction === 'asc' && state ? 'desk' : 'asc',
+        }
+
+        setBooks(sortedBooks[direction === 'asc' ? 'reverse' : 'slice']())
+        setSortState({ ...INITIAL_STATE_OF_SORT, [key]: changedSortingState })
     }
 
-    return (
-        <fieldset
-            onChange={(event) => getSortedBooks(event)}
-            className={styles.fieldset}
+    return Object.keys(INITIAL_STATE_OF_SORT).map((key, index) => (
+        <div
+            onClick={() => sortBooks(key)}
+            className={`${styles.blockSorting} ${
+                sortState[key as keyof typeof sortState].state
+                    ? 'blockSortingActive'
+                    : ''
+            }`}
+            key={index}
         >
-            <legend>Сортировка</legend>
-            {Object.keys(sortByProperties).map((item, index) => (
-                <div className={styles.blockRadio} key={index}>
-                    <input type="radio" id={item} name="drone" value={item} />
-                    <label htmlFor={item}>{item}</label>
-                </div>
-            ))}
-        </fieldset>
-    )
+            {sortState[key as keyof typeof sortState].state && (
+                <CaretUpOutlined
+                    style={{
+                        marginRight: 10,
+                        rotate:
+                            sortState[key as keyof typeof sortState]
+                                .direction === 'asc'
+                                ? '180deg'
+                                : '0deg',
+                        transition: '0.3s',
+                    }}
+                />
+            )}
+            <p>{TITLES_BUTTONS[key as keyof typeof TITLES_BUTTONS]}</p>
+        </div>
+    ))
 }
 
 export default SortPanel

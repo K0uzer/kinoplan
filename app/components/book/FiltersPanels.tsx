@@ -9,6 +9,7 @@ import {
     KINDS_KEYS_LOCAL_STORAGE,
     TITLE_SELECTS_OF_FILTER,
 } from '@app/constants'
+import { useLocalStorage } from '@app/hooks/useLocalStorage'
 
 import styles from './FiltersPanel.module.css'
 
@@ -21,13 +22,12 @@ const FiltersPanel = () => {
     const [selectedOptions, setSelectedOptions] = useState(
         INITIAL_OPTIONS_FILTERS,
     )
+    const { getLocalStorage } = useLocalStorage()
 
-    const booksFromLocalStorage: Book[] = localStorage.getItem(
+    const booksFromLocalStorage: Book[] = getLocalStorage(
         KINDS_KEYS_LOCAL_STORAGE.BOOKS,
     )
-        ? JSON.parse(
-              localStorage.getItem(KINDS_KEYS_LOCAL_STORAGE.BOOKS) as string,
-          )
+        ? getLocalStorage(KINDS_KEYS_LOCAL_STORAGE.BOOKS)
         : []
 
     const filteredArrays = {
@@ -75,7 +75,7 @@ const FiltersPanel = () => {
     }
 
     return (
-        <div>
+        <>
             {TITLE_SELECTS_OF_FILTER.map((select) => (
                 <select
                     key={select}
@@ -103,7 +103,7 @@ const FiltersPanel = () => {
                     ))}
                 </select>
             ))}
-        </div>
+        </>
     )
 }
 

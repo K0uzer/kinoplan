@@ -8,6 +8,7 @@ import BookContextProvider from '@context/book'
 const inter = Inter({ subsets: ['latin'] })
 
 import './globals.css'
+import UserContextProvider from './context/user'
 
 export const metadata: Metadata = {
     title: 'Книжный план',
@@ -20,7 +21,9 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         <html lang="ru">
             <BookContextProvider>
                 <body className={inter.className}>
-                    <Header />
+                    <UserContextProvider>
+                        <Header />
+                    </UserContextProvider>
                     {children}
                 </body>
             </BookContextProvider>

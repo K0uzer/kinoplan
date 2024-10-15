@@ -1,3 +1,5 @@
+import { TITLES_BUTTONS } from '@app/constants'
+
 export type BookFromServer = {
     id: number
     volumeInfo: {
@@ -19,4 +21,12 @@ export type Book = {
     image: string
     category: string
     count: number
+}
+
+export type TITLES_BUTTONS_KEY = keyof typeof TITLES_BUTTONS
+
+export type TITLES_BUTTONS_MAPPER = {
+    author: string
+    category: string
+    publishedDate: string
 }

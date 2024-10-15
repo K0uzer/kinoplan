@@ -2,8 +2,8 @@
     font-family: 'Times New Roman', Times, serif;
     display: flex;
     align-items: center;
-    margin: 2rem;
     padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid var(--cart-item-border);
 }
 

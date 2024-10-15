@@ -1,3 +1,9 @@
-.fieldset {
+.blockSorting {
     display: flex;
+    align-items: center;
+    user-select: none;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
 }

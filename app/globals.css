@@ -18,4 +18,6 @@
     --button-cart-background-color--hover: #83ef31b3;
     --button-popover-background-color: #244db4d9;
     --button-popover-background-color--hover: #3167efb3;
+    --border-form-color: rgb(13, 113, 184);
+    --background-color-form: ghostwhite;
 }
