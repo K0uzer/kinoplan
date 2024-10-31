@@ -4,11 +4,11 @@ import { ReactNode } from 'react'
 
 import Header from '@components/header/Header'
 import BookContextProvider from '@context/book'
+import UserContextProvider from './context/user'
 
 const inter = Inter({ subsets: ['latin'] })
 
 import './globals.css'
-import UserContextProvider from './context/user'
 
 export const metadata: Metadata = {
     title: 'Книжный план',

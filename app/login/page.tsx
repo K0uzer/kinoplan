@@ -11,6 +11,8 @@ const page = () => {
                 <h2 className={styles.preview}>
                     добро пожаловать на knigoplan
                 </h2>
+                <p>Авторизация</p>
+                <p>Регистрация</p>
                 <input
                     className={styles.input}
                     id="email"
