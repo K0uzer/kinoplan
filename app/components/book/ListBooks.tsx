@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 
 import ItemBook from './ItemBook'
 import { useBook } from '@app/hooks/useBook'
@@ -11,25 +11,21 @@ import { reloadPage } from '@app/utils'
 import styles from './ListBooks.module.css'
 
 const ListBooks = () => {
-    const { books, positionContent } = useBook()
-    const [isLoading, setIsLoading] = useState(true)
+    const { books, positionContent, isLoading, setIsLoading } = useBook()
     const [hasFetchResult, setHasFetchResult] = useState(false)
     const { getLocalStorage } = useLocalStorage()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        setIsLoading(true)
         const checkLocalStorage = async () => {
             const result = await getLocalStorage(
                 KINDS_KEYS_LOCAL_STORAGE.RESULT_FETCH,
             )
             setHasFetchResult(result !== null)
-            setIsLoading(false)
         }
         checkLocalStorage()
-    }, [getLocalStorage])
-
-    if (isLoading) {
-        return <div>Загрузка...</div>
-    }
+        setIsLoading(false)
+    }, [getLocalStorage, setIsLoading])
 
     if (!hasFetchResult) {
         return (

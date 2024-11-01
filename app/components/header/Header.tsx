@@ -16,20 +16,20 @@ const Header = () => {
     const checkCookies = () => {}
     return (
         <header className={styles.header}>
-            <span className={styles.preview}>Пришло время читать🐱</span>
+            <Link href={PATH.MAIN}>
+                <span className={styles.preview}>Пришло время читать🐱</span>
+            </Link>
             <div className={styles.containerOfButton}>
                 <Popover />
-                {location.pathname === PATH.MAIN && (
-                    <Link className={styles.link} href={PATH.PROFILE}>
-                        <div
-                            onClick={checkCookies}
-                            className={styles.containerOfAuth}
-                        >
-                            <span>Личный кабинет</span>
-                            <UserOutlined />
-                        </div>
-                    </Link>
-                )}
+                <Link className={styles.link} href={PATH.PROFILE}>
+                    <div
+                        onClick={checkCookies}
+                        className={styles.containerOfAuth}
+                    >
+                        <span>Личный кабинет</span>
+                        <UserOutlined />
+                    </div>
+                </Link>
             </div>
         </header>
     )

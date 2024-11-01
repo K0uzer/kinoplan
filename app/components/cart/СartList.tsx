@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 
 import { useBook } from '@app/hooks/useBook'
 import CartItem from './СartItem'
@@ -14,11 +14,11 @@ const CartList = () => {
 
     const cartFromLocalStorage = getLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (cartFromLocalStorage?.length) {
             setCart(cartFromLocalStorage)
         }
-    }, [])
+    }, [cart, cartFromLocalStorage, setCart])
 
     return (
         <>
