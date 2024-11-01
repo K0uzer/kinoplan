@@ -10,9 +10,11 @@ export default async function PrivatePage() {
         redirect('/login')
     }
 
-    return <main>
-        <h1>Private Page</h1>
-        <p>Welcome, {data?.user.email}!</p>
-        <button onClick={() => supabase.auth.signOut()}>Logout</button>
-    </main>
+    return (
+        <main>
+            <h1>Private Page</h1>
+            <p>Welcome, {data?.user.email}!</p>
+            <button onClick={() => supabase.auth.signOut()}>Logout</button>
+        </main>
+    )
 }

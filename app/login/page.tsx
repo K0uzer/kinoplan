@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { login, signup as sigUp } from './actions'
+import { login } from './actions'
 
 import styles from './page.module.css'
 
@@ -29,9 +29,9 @@ const page = () => {
                     <button className={styles.button} formAction={login}>
                         Авторизоваться
                     </button>
-                    <button className={styles.button} formAction={sigUp}>
+                    {/* <button className={styles.button} formAction={sigUp}>
                         Зарегестрироваться
-                    </button>
+                    </button> */}
                 </div>
             </form>
         </main>
