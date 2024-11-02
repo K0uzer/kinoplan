@@ -49,9 +49,17 @@ const ListBooks = () => {
                     : styles.listLines
             }
         >
-            {books.map((book) => (
-                <ItemBook key={book.id} view={positionContent} book={book} />
-            ))}
+            {isLoading ? (
+                <div>Загрузка...</div>
+            ) : (
+                books.map((book) => (
+                    <ItemBook
+                        key={book.id}
+                        view={positionContent}
+                        book={book}
+                    />
+                ))
+            )}
         </ul>
     )
 }

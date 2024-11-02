@@ -7,7 +7,7 @@ const INITIAL_POSITION: 'table' | 'lines' = 'table'
 const PATH = {
     MAIN: '/',
     CART: '/cart',
-    PROFILE: '/private',
+    PROFILE: '/account',
     AUTH: '/login',
     ERROR: '/error',
 }
