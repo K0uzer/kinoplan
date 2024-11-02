@@ -21,7 +21,7 @@ const Header = () => {
             </Link>
             <div className={styles.containerOfButton}>
                 <Popover />
-                <Link className={styles.link} href={PATH.PROFILE}>
+                <Link className={styles.link} href={PATH.AUTH}>
                     <div
                         onClick={checkCookies}
                         className={styles.containerOfAuth}

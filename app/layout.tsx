@@ -19,14 +19,14 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: ReactNode }) => {
     return (
         <html lang="ru">
-            <BookContextProvider>
-                <body className={inter.className}>
+            <body className={inter.className}>
+                <BookContextProvider>
                     <UserContextProvider>
                         <Header />
                     </UserContextProvider>
                     {children}
-                </body>
-            </BookContextProvider>
+                </BookContextProvider>
+            </body>
         </html>
     )
 }

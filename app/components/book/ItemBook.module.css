@@ -22,7 +22,10 @@
 .titleBook {
     font-size: 20px;
     font-weight: 500;
+    height: 54px;
     margin-top: 10px;
+    overflow: hidden;
+    cursor: help;
 }
 
 .imageBook {

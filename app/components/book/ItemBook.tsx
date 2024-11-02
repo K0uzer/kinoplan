@@ -46,7 +46,9 @@ const ItemBook: React.FC<ItemBookProps> = ({ book, view }) => {
                 view !== 'table' && styles.listItemForLine
             }`}
         >
-            <span className={styles.titleBook}>{book?.title}</span>
+            <span className={styles.titleBook} title={book?.title}>
+                {book?.title}
+            </span>
             <Image
                 className={styles.imageBook}
                 src={book.image ?? plugForImage}

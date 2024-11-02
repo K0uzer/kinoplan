@@ -18,7 +18,7 @@ const CartList = () => {
         if (cartFromLocalStorage?.length) {
             setCart(cartFromLocalStorage)
         }
-    }, [cart, cartFromLocalStorage, setCart])
+    }, [])
 
     return (
         <>
