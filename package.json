@@ -19,7 +19,7 @@
         "eslint-config-next": "14.2.3",
         "formik": "^2.4.6",
         "module-alias": "2.2.3",
-        "next": "14.2.4",
+        "next": "14.2.16",
         "next-auth": "4.24.7",
         "npm": "10.8.1",
         "react": "18.3.1",
