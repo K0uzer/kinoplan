@@ -1,4 +1,4 @@
-import AccountForm from './account-form'
+import AccountForm from '../components/account/AccountForm'
 import { createClient } from 'utils/supabase/server'
 
 export default async function Account() {
