@@ -17,7 +17,7 @@
 
 .formWidget div {
     width: 100%;
-    margin: 0 10 15 0;
+    margin: 10px 0;
 }
 
 .formWidget label {
@@ -26,8 +26,8 @@
     font-weight: bold;
 }
 
-.formWidget input[type='text'] {
-    width: 100%;
+.formWidget input {
+    width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;

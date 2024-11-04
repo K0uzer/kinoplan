@@ -10,18 +10,43 @@ import styles from './account-form.module.css'
 
 const actionPathLogout = '/auth/signout'
 
+const dataForLabels = [
+    { htmlFor: 'id', title: 'Идентификационный номер' },
+    { htmlFor: 'email', title: 'Email' },
+    { htmlFor: 'role', title: 'Роль' },
+]
+
 export default function AccountForm({ user }: { user: User | null }) {
     const supabase = createClient()
     const { isLoading, setIsLoading } = useBook()
     const [username, setUsername] = useState<string | null>(null)
+
+    const dataFarInputs = [
+        {
+            id: 'id',
+            type: 'text',
+            value: user?.id || null,
+            disabled: true,
+        },
+        {
+            id: 'email',
+            type: 'email',
+            value: user?.email || null,
+            disabled: true,
+        },
+        {
+            id: 'role',
+            type: 'text',
+            value: user?.role || null,
+            disabled: true,
+        },
+    ]
 
     const getProfile = useCallback(async () => {
         try {
             setIsLoading(true)
 
             const { data, error } = await supabase.auth.getUser()
-
-            console.log(data)
 
             if (error) {
                 console.log(error)
@@ -32,7 +57,7 @@ export default function AccountForm({ user }: { user: User | null }) {
                 setUsername(data.user?.user_metadata.display_name)
             }
         } catch (error) {
-            console.log('Error loading user data!')
+            console.log('Ошибка при загрузки данных!')
         } finally {
             setIsLoading(false)
         }
@@ -46,7 +71,7 @@ export default function AccountForm({ user }: { user: User | null }) {
                     data: { display_name: username },
                 })
             updateAuthOfSupabase()
-            alert('Имя пользователя изменено')
+            alert('Данные пользователя изменены')
         } catch (error) {
             alert('Ошибка обновления данных')
         } finally {
@@ -58,116 +83,32 @@ export default function AccountForm({ user }: { user: User | null }) {
         getProfile()
     }, [user, getProfile])
 
-    const dataForLabels = [
-        { htmlFor: 'id', title: 'Идентификационный номер' },
-        { htmlFor: 'email', title: 'Email' },
-        { htmlFor: 'username', title: 'Имя' },
-        { htmlFor: 'phone', title: 'Телефон' },
-        { htmlFor: 'role', title: 'Роль' },
-    ]
-    const dataFarInputs = [
-        {
-            id: 'id',
-            type: 'number',
-            value: user?.email,
-            disabled: true,
-        },
-        {
-            id: 'email',
-            type: 'email',
-            value: user?.email,
-            disabled: true,
-        },
-        {
-            id: 'username',
-            type: 'text',
-            value: user?.email,
-            disabled: isLoading,
-        },
-        {
-            id: 'phone',
-            type: 'phone',
-            value: user?.email,
-            disabled: isLoading,
-        },
-        {
-            id: 'role',
-            type: 'text',
-            value: user?.email,
-            disabled: true,
-        },
-    ]
-
     return (
         <section className={styles.formWidget}>
             <h2 className={styles.accountPreview}>Профиль</h2>
             <form action={actionPathLogout} method="post">
-                {/* {dataFarInputs.map(({ value, type, id, disabled }, index) => (
-                    <div key={type}>
-                        <label htmlFor="id">Идентификационный номер</label>
+                {dataFarInputs.map(({ value, type, id, disabled }, index) => (
+                    <div key={index}>
+                        <label htmlFor={dataForLabels[index].htmlFor}>
+                            {dataForLabels[index].title}
+                        </label>
                         <input
                             id={id}
                             type={type}
-                            value={value}
+                            value={value ?? ''}
                             disabled={disabled}
                         />
                     </div>
-                ))} */}
+                ))}
                 <div>
-                    <div>
-                        <label htmlFor="id">Идентификационный номер</label>
-                        <input
-                            id="id"
-                            type="number"
-                            value={user?.email}
-                            disabled
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={user?.email}
-                            disabled
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="username">Имя</label>
-                        <input
-                            id="username"
-                            type="text"
-                            value={username || ''}
-                            onChange={(event) =>
-                                setUsername(event.target.value)
-                            }
-                            disabled={isLoading}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="phone">Телефон</label>
-                        <input
-                            id="phone"
-                            type="phone"
-                            value={username || ''}
-                            onChange={(event) =>
-                                setUsername(event.target.value)
-                            }
-                            disabled={isLoading}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="role">Роль</label>
-                        <input
-                            id="role"
-                            type="text"
-                            value={username || ''}
-                            onChange={(event) =>
-                                setUsername(event.target.value)
-                            }
-                            disabled
-                        />
-                    </div>
+                    <label htmlFor="username">Имя</label>
+                    <input
+                        id="username"
+                        type="text"
+                        value={username || ''}
+                        onChange={(event) => setUsername(event.target.value)}
+                        disabled={isLoading}
+                    />
                 </div>
                 <ButtonsContainer
                     updateProfile={updateProfile}
