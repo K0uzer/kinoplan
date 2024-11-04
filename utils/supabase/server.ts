@@ -18,7 +18,7 @@ export function createClient() {
                             cookieStore.set(name, value, options),
                         )
                     } catch {
-                        console.error('Error setting cookies')
+                        console.error('Ошибка куки')
                     }
                 },
             },
