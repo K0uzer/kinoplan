@@ -42,18 +42,16 @@ const Cart = () => {
   const quantityBooksInCart = cart.reduce((curr, exp) => curr + exp.count, 0)
 
   return (
-    <>
-      <Popover
-        className={styles.popover}
-        content={Content}
-        title="Выбранные товары:"
-      >
-        <button className={styles.buttonPopover}>Корзина</button>
-        {!!cart.length && (
-          <span className={styles.countButton}>{quantityBooksInCart}</span>
-        )}
-      </Popover>
-    </>
+    <Popover
+      className={styles.popover}
+      content={Content}
+      title="Выбранные товары:"
+    >
+      <button className={styles.buttonPopover}>Корзина</button>
+      {!!cart.length && (
+        <span className={styles.countButton}>{quantityBooksInCart}</span>
+      )}
+    </Popover>
   )
 }
 
