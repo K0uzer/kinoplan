@@ -9,33 +9,33 @@ import { KINDS_KEYS_LOCAL_STORAGE } from '@app/constants'
 import styles from './CartList.module.css'
 
 const CartList = () => {
-    const { cart, setCart } = useBook()
-    const { getLocalStorage } = useLocalStorage()
+  const { cart, setCart } = useBook()
+  const { getLocalStorage } = useLocalStorage()
 
-    const cartFromLocalStorage = getLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART)
+  const cartFromLocalStorage = getLocalStorage(KINDS_KEYS_LOCAL_STORAGE.CART)
 
-    useLayoutEffect(() => {
-        if (cartFromLocalStorage?.length) {
-            setCart(cartFromLocalStorage)
-        }
-    }, [])
+  useLayoutEffect(() => {
+    if (cartFromLocalStorage?.length) {
+      setCart(cartFromLocalStorage)
+    }
+  }, [])
 
-    return (
+  return (
+    <>
+      {!cart.length ? (
+        <p>Корзина пуста :c</p>
+      ) : (
         <>
-            {!cart.length ? (
-                <p>Корзина пуста :c</p>
-            ) : (
-                <>
-                    <p>Ваши покупки:</p>
-                    <ul className={styles.cartList}>
-                        {cart.map((book) => (
-                            <CartItem key={book.id} book={book} />
-                        ))}
-                    </ul>
-                </>
-            )}
+          <p>Ваши покупки:</p>
+          <ul className={styles.cartList}>
+            {cart.map((book) => (
+              <CartItem key={book.id} book={book} />
+            ))}
+          </ul>
         </>
-    )
+      )}
+    </>
+  )
 }
 
 export default CartList

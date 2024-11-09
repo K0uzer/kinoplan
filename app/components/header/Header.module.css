@@ -1,84 +1,84 @@
 .header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .containerOfAuth {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 50px;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    background-color: var(--button-popover-background-color);
-    transition: 0.3s ease-out;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  background-color: var(--button-popover-background-color);
+  transition: 0.3s ease-out;
+  cursor: pointer;
 
-    &:hover {
-        background-color: var(--button-popover-background-color--hover);
-        transition: 0.3s ease-out;
-    }
+  &:hover {
+    background-color: var(--button-popover-background-color--hover);
+    transition: 0.3s ease-out;
+  }
 }
 
 .containerOfButton {
-    display: flex;
+  display: flex;
 }
 
 .profileIcon {
 }
 
 .link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .preview {
-    color: transparent;
-    background-clip: text;
-    background-image: linear-gradient(
-        to bottom left,
-        var(--preview-color-gradient-left-bottom),
-        var(--preview-color-gradient-right-top)
-    );
-    -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(
+    to bottom left,
+    var(--preview-color-gradient-left-bottom),
+    var(--preview-color-gradient-right-top)
+  );
+  -webkit-background-clip: text;
 }
 
 @media (max-width: 575px) {
-    .preview {
-        font-size: 20px;
-    }
-    .imageOfPreview {
-        display: none;
-    }
+  .preview {
+    font-size: 20px;
+  }
+  .imageOfPreview {
+    display: none;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-    .preview {
-        font-size: 25px;
-    }
-    .imageOfPreview {
-        display: none;
-    }
+  .preview {
+    font-size: 25px;
+  }
+  .imageOfPreview {
+    display: none;
+  }
 }
 
 @media (min-width: 768) and (max-width: 1199px) {
-    .preview {
-        font-size: 30px;
-    }
-    .imageOfPreview {
-        width: 120px;
-        height: 90px;
-    }
+  .preview {
+    font-size: 30px;
+  }
+  .imageOfPreview {
+    width: 120px;
+    height: 90px;
+  }
 }
 
 @media (min-width: 1200px) {
-    .preview {
-        font-size: 55px;
-    }
-    .imageOfPreview {
-        width: 190px;
-        height: 140px;
-    }
+  .preview {
+    font-size: 55px;
+  }
+  .imageOfPreview {
+    width: 190px;
+    height: 140px;
+  }
 }

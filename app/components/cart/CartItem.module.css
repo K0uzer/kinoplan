@@ -1,36 +1,36 @@
 .cartItem {
-    font-family: 'Times New Roman', Times, serif;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid var(--cart-item-border);
+  font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--cart-item-border);
 }
 
 .itemContent {
-    width: 40ch;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  width: 40ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .quantity {
-    width: 40ch;
-    text-overflow: ellipsis;
+  width: 40ch;
+  text-overflow: ellipsis;
 }
 
 .button {
-    width: 75px;
-    height: 25px;
-    margin-left: 1%;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--button-background-color);
-    transition: 0.3s ease-out;
-    cursor: pointer;
+  width: 75px;
+  height: 25px;
+  margin-left: 1%;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--button-background-color);
+  transition: 0.3s ease-out;
+  cursor: pointer;
 
-    &:hover {
-        background-color: var(--button-background-color-hover);
-        transition: 0.3s ease-out;
-    }
+  &:hover {
+    background-color: var(--button-background-color-hover);
+    transition: 0.3s ease-out;
+  }
 }

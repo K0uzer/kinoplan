@@ -11,24 +11,24 @@ const inter = Inter({ subsets: ['latin'] })
 import './globals.css'
 
 export const metadata: Metadata = {
-    title: 'Книжный план',
-    description: 'Приложение для продажи книг',
-    icons: '@public/logo.jpg',
+  title: 'Книжный план',
+  description: 'Приложение для продажи книг',
+  icons: '@public/logo.jpg',
 }
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
-    return (
-        <html lang="ru">
-            <body className={inter.className}>
-                <BookContextProvider>
-                    <UserContextProvider>
-                        <Header />
-                    </UserContextProvider>
-                    {children}
-                </BookContextProvider>
-            </body>
-        </html>
-    )
+  return (
+    <html lang="ru">
+      <body className={inter.className}>
+        <BookContextProvider>
+          <UserContextProvider>
+            <Header />
+          </UserContextProvider>
+          {children}
+        </BookContextProvider>
+      </body>
+    </html>
+  )
 }
 
 export default RootLayout

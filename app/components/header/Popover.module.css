@@ -1,90 +1,90 @@
 .popover {
-    position: relative;
+  position: relative;
 }
 
 .cart {
-    width: auto;
-    overflow-y: scroll;
-    max-height: 350px;
+  width: auto;
+  overflow-y: scroll;
+  max-height: 350px;
 }
 
 .cart::-webkit-scrollbar {
-    width: 0;
+  width: 0;
 }
 
 .buttonCartContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .buttonCart {
-    width: 200px;
-    height: 25px;
-    margin: 0 5px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--button-cart-background-color);
-    transition: 0.3s ease-out;
-    cursor: pointer;
+  width: 200px;
+  height: 25px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--button-cart-background-color);
+  transition: 0.3s ease-out;
+  cursor: pointer;
 
-    &:hover {
-        background-color: var(--button-cart-background-color--hover);
-        transition: 0.3s ease-out;
-    }
+  &:hover {
+    background-color: var(--button-cart-background-color--hover);
+    transition: 0.3s ease-out;
+  }
 }
 
 .buttonPopover {
-    width: 200px;
-    height: 50px;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    background-color: var(--button-popover-background-color);
-    transition: 0.3s ease-out;
-    cursor: pointer;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  background-color: var(--button-popover-background-color);
+  transition: 0.3s ease-out;
+  cursor: pointer;
 
-    &:hover {
-        background-color: var(--button-popover-background-color--hover);
-        transition: 0.3s ease-out;
-    }
+  &:hover {
+    background-color: var(--button-popover-background-color--hover);
+    transition: 0.3s ease-out;
+  }
 }
 
 .countButton {
-    position: absolute;
-    left: 11.5rem;
-    padding: 10px;
-    background-color: aquamarine;
-    border-radius: 50%;
+  position: absolute;
+  left: 11.5rem;
+  padding: 10px;
+  background-color: aquamarine;
+  border-radius: 50%;
 }
 
 @media (max-width: 575px) {
-    .buttonPopover {
-        width: 100px;
-        height: 40px;
-    }
-    .countButton {
-        left: 5rem;
-        padding: 10px;
-    }
+  .buttonPopover {
+    width: 100px;
+    height: 40px;
+  }
+  .countButton {
+    left: 5rem;
+    padding: 10px;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-    .buttonPopover {
-        width: 200px;
-        height: 50px;
-    }
-    .countButton {
-        left: 10rem;
-        padding: 14px;
-    }
+  .buttonPopover {
+    width: 200px;
+    height: 50px;
+  }
+  .countButton {
+    left: 10rem;
+    padding: 14px;
+  }
 }
 
 @media (min-width: 768) and (max-width: 1199px) {
 }
 
 @media (min-width: 1200px) {
-    .countButton {
-        left: 10rem;
-        padding: 14px;
-    }
+  .countButton {
+    left: 10rem;
+    padding: 14px;
+  }
 }

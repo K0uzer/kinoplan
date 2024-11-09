@@ -1,28 +1,28 @@
 .cartWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .buttonWrapper {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .button {
-    width: 200px;
-    height: 50px;
-    margin: 5px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--background-color);
-    transition: 0.3s ease-out;
-    cursor: pointer;
+  width: 200px;
+  height: 50px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--background-color);
+  transition: 0.3s ease-out;
+  cursor: pointer;
 
-    &:hover {
-        color: white;
-        background-color: var(--background-color-hover);
-        transition: 0.3s ease-out;
-    }
+  &:hover {
+    color: white;
+    background-color: var(--background-color-hover);
+    transition: 0.3s ease-out;
+  }
 }

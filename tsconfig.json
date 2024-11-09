@@ -1,36 +1,36 @@
 {
-    "compilerOptions": {
-        "types": [],
-        "target": "ES2018",
-        "lib": ["dom", "dom.iterable", "esnext", "es6"],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "noEmit": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "bundler",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "incremental": true,
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ],
-        "baseUrl": "./",
-        "paths": {
-            "@app/*": ["app/*"],
-            "@public/*": ["app/public/*"],
-            "@types/*": ["app/types/*"],
-            "@components/*": ["app/components/*"],
-            "@hooks/*": ["app/hooks/*"],
-            "@constants/*": ["app/constants/*"],
-            "@api/*": ["app/api/*"],
-            "@context/*": ["app/context/*"]
-        }
-    },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-    "exclude": ["node_modules"]
+  "compilerOptions": {
+    "types": [],
+    "target": "ES2018",
+    "lib": ["dom", "dom.iterable", "esnext", "es6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@public/*": ["app/public/*"],
+      "@types/*": ["app/types/*"],
+      "@components/*": ["app/components/*"],
+      "@hooks/*": ["app/hooks/*"],
+      "@constants/*": ["app/constants/*"],
+      "@api/*": ["app/api/*"],
+      "@context/*": ["app/context/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

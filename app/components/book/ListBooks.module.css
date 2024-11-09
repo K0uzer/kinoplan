@@ -1,56 +1,56 @@
 .listTable {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0;
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+  margin-bottom: 20px;
 }
 
 .listLines {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 }
 
 .button {
-    width: 200px;
-    height: 50px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--button-add-background-color);
-    transition: 0.3s ease-out;
-    cursor: pointer;
+  width: 200px;
+  height: 50px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--button-add-background-color);
+  transition: 0.3s ease-out;
+  cursor: pointer;
 
-    &:hover {
-        color: white;
-        background-color: var(--button-add-background-color--hover);
-        transition: 0.3s ease-out;
-    }
+  &:hover {
+    color: white;
+    background-color: var(--button-add-background-color--hover);
+    transition: 0.3s ease-out;
+  }
 }
 
 .containerError {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
 }
 
 @media (max-width: 575px) {
-    .listTable {
-        grid-template-columns: 1fr;
-    }
+  .listTable {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-    .listTable {
-        grid-template-columns: 1fr;
-    }
+  .listTable {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (min-width: 1200px) {
-    .listTable {
-        grid-template-columns: 1fr 1fr 1fr;
-        margin: 0 3rem 0 3rem;
-    }
+  .listTable {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 3rem 0 3rem;
+  }
 }
