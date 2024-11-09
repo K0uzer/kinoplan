@@ -1,99 +1,99 @@
 .listItem {
-    font-family: system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: auto;
-    margin: 1rem;
-    padding: 1rem;
-    border: 2px solid var(--list-item-border-color);
-    border-radius: 6px;
-    box-shadow: 9px 5px var(--list-item-box-shadow-color);
-    transition: 0.3s ease-out;
+  font-family: system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: auto;
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--list-item-border-color);
+  border-radius: 6px;
+  box-shadow: 9px 5px var(--list-item-box-shadow-color);
+  transition: 0.3s ease-out;
 
-    &:hover {
-        box-shadow: 5px 2px var(--list-item-box-shadow-color--hover);
-        transition: 0.3s ease-out;
-        transform: translate(8px, 5px);
-    }
+  &:hover {
+    box-shadow: 5px 2px var(--list-item-box-shadow-color--hover);
+    transition: 0.3s ease-out;
+    transform: translate(8px, 5px);
+  }
 }
 
 .titleBook {
-    font-size: 20px;
-    font-weight: 500;
-    height: 54px;
-    margin-top: 10px;
-    overflow: hidden;
-    cursor: help;
+  font-size: 20px;
+  font-weight: 500;
+  height: 54px;
+  margin-top: 10px;
+  overflow: hidden;
+  cursor: help;
 }
 
 .imageBook {
-    margin: 20px;
-    border: 1px solid;
+  margin: 20px;
+  border: 1px solid;
 }
 
 .publishedDate {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .categoryBook {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .buttonAdd {
-    width: 200px;
-    height: 50px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--button-add-background-color);
-    transition: 0.3s ease-out;
-    cursor: pointer;
+  width: 200px;
+  height: 50px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--button-add-background-color);
+  transition: 0.3s ease-out;
+  cursor: pointer;
 
-    &:hover {
-        color: white;
-        background-color: var(--button-add-background-color--hover);
-        transition: 0.3s ease-out;
-    }
+  &:hover {
+    color: white;
+    background-color: var(--button-add-background-color--hover);
+    transition: 0.3s ease-out;
+  }
 }
 
 .buttonCounter {
-    width: 100px;
-    height: 50px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--button-counter-background-color);
-    transition: 0.3s ease-out;
-    cursor: pointer;
+  width: 100px;
+  height: 50px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--button-counter-background-color);
+  transition: 0.3s ease-out;
+  cursor: pointer;
 
-    &:hover {
-        background-color: var(--button-counter-background-color--hover);
-        transition: 0.3s ease-out;
-    }
+  &:hover {
+    background-color: var(--button-counter-background-color--hover);
+    transition: 0.3s ease-out;
+  }
 }
 
 @media (max-width: 575px) {
-    .preview {
-        font-size: 20px;
-    }
-    .imageOfPreview {
-        display: none;
-    }
+  .preview {
+    font-size: 20px;
+  }
+  .imageOfPreview {
+    display: none;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-    .preview {
-        font-size: 25px;
-    }
-    .imageOfPreview {
-        display: none;
-    }
+  .preview {
+    font-size: 25px;
+  }
+  .imageOfPreview {
+    display: none;
+  }
 }
 
 @media (min-width: 1200px) {
-    .cartItem {
-        width: 570px;
-    }
+  .cartItem {
+    width: 570px;
+  }
 }

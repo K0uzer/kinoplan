@@ -1,21 +1,21 @@
 .button {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin: 10px;
-    color: white;
-    background-color: var(--button-position-background);
-    border: none;
-    cursor: pointer;
-    transition: 0.3s ease-out;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 10px;
+  color: white;
+  background-color: var(--button-position-background);
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-out;
 
-    &:hover {
-        border-radius: 50%;
-        transition: 0.3s ease-out;
-    }
+  &:hover {
+    border-radius: 50%;
+    transition: 0.3s ease-out;
+  }
 }
 
 @media (max-width: 575px) {
-    .button {
-        display: none;
-    }
+  .button {
+    display: none;
+  }
 }

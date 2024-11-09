@@ -1,47 +1,47 @@
 {
-    "name": "kinoplan",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev --turbo",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint"
-    },
-    "dependencies": {
-        "@supabase/ssr": "0.5.1",
-        "@supabase/supabase-js": "2.45.4",
-        "antd": "5.18.1",
-        "commitlint": "19.3.0",
-        "dotenv": "16.4.5",
-        "easymde": "2.18.0",
-        "eslint": "8.57.0",
-        "eslint-config-next": "14.2.3",
-        "formik": "^2.4.6",
-        "module-alias": "2.2.3",
-        "next": "14.2.4",
-        "next-auth": "4.24.7",
-        "npm": "10.8.1",
-        "react": "18.3.1",
-        "react-dom": "18.3.1",
-        "react-hook-form": "7.53.0",
-        "react-markdown": "9.0.1",
-        "react-simplemde-editor": "5.2.0",
-        "sonarqube-scanner": "4.0.1",
-        "supabase": "1.191.3",
-        "typescript": "5.4.5",
-        "uuid": "10.0.0",
-        "yup": "^1.4.0"
-    },
-    "devDependencies": {
-        "@types/node": "20.14.2",
-        "@types/react": "18.3.3",
-        "@types/react-dom": "18.3.0",
-        "eslint-plugin-react-hooks": "4.6.2",
-        "terser-brunch": "4.1.0"
-    },
-    "_moduleAliases": {
-        "@modules": "dist/rest/modules",
-        "@services": "dist/services"
-    }
+  "name": "kinoplan",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@supabase/ssr": "0.5.1",
+    "@supabase/supabase-js": "2.45.4",
+    "antd": "5.18.1",
+    "commitlint": "19.3.0",
+    "dotenv": "16.4.5",
+    "easymde": "2.18.0",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.3",
+    "formik": "^2.4.6",
+    "module-alias": "2.2.3",
+    "next": "14.2.4",
+    "next-auth": "4.24.7",
+    "npm": "10.8.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hook-form": "7.53.0",
+    "react-markdown": "9.0.1",
+    "react-simplemde-editor": "5.2.0",
+    "sonarqube-scanner": "4.0.1",
+    "supabase": "1.191.3",
+    "typescript": "5.4.5",
+    "uuid": "10.0.0",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.2",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "eslint-plugin-react-hooks": "4.6.2",
+    "terser-brunch": "4.1.0"
+  },
+  "_moduleAliases": {
+    "@modules": "dist/rest/modules",
+    "@services": "dist/services"
+  }
 }

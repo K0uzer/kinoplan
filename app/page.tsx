@@ -10,28 +10,28 @@ import DropDown from '@components/book/DropDown'
 import PositioningPanel from './components/book/PositioningPanel'
 
 const HomePage = () => {
-    const { isLoading } = useBook()
-    const { setBooks, setIsLoading } = useBook()
+  const { isLoading } = useBook()
+  const { setBooks, setIsLoading } = useBook()
 
-    useLayoutEffect(() => {
-        getBooks(setBooks, setIsLoading)
-    }, [setBooks, setIsLoading])
+  useLayoutEffect(() => {
+    getBooks(setBooks, setIsLoading)
+  }, [setBooks, setIsLoading])
 
-    return (
-        <main>
-            {isLoading ? (
-                <Loader />
-            ) : (
-                <>
-                    <Panels>
-                        <DropDown />
-                        <PositioningPanel />
-                    </Panels>
-                    <ListBooks />
-                </>
-            )}
-        </main>
-    )
+  return (
+    <main>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Panels>
+            <DropDown />
+            <PositioningPanel />
+          </Panels>
+          <ListBooks />
+        </>
+      )}
+    </main>
+  )
 }
 
 export default HomePage

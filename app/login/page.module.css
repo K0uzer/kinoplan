@@ -1,45 +1,45 @@
 .main {
-    margin-top: 5%;
-    text-align: center;
+  margin-top: 5%;
+  text-align: center;
 }
 
 .preview {
-    text-transform: uppercase;
-    text-decoration: underline;
-    user-select: none;
+  text-transform: uppercase;
+  text-decoration: underline;
+  user-select: none;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--background-color-form);
-    border: 1px solid var(--border-form-color);
-    border-width: 3px;
-    box-shadow: 20px 30px 20px -1px rgba(34, 60, 80, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-color-form);
+  border: 1px solid var(--border-form-color);
+  border-width: 3px;
+  box-shadow: 20px 30px 20px -1px rgba(34, 60, 80, 0.2);
 }
 
 .input {
-    width: 50%;
-    margin-top: 2%;
+  width: 50%;
+  margin-top: 2%;
 }
 
 .buttonWrapper {
-    margin: 3% 0;
+  margin: 3% 0;
 }
 
 .button {
-    width: 200px;
-    height: 25px;
-    margin: 0 5px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--button-cart-background-color);
-    transition: 0.3s ease-out;
-    cursor: pointer;
+  width: 200px;
+  height: 25px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--button-cart-background-color);
+  transition: 0.3s ease-out;
+  cursor: pointer;
 
-    &:hover {
-        background-color: var(--button-cart-background-color--hover);
-        transition: 0.3s ease-out;
-    }
+  &:hover {
+    background-color: var(--button-cart-background-color--hover);
+    transition: 0.3s ease-out;
+  }
 }
